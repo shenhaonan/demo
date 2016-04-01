@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>图片无缝左右箭头单击滚动</title>
+  <script type="text/javascript" src="http://www.lbboke.com/js/jquery.js"></script>
+  <style>
+      .outer_top{ height: 52px;border: 1px solid #e1e1e1;background: url('../images/con_jiantou.png') no-repeat  right 26px;font-size: 20px; line-height: 52px; color: #333;font-family: "微软雅黑";padding-left: 16px;}
+      .outer_top a,.outer_r_top a{float: right;display: block;width: 63px;font-size: 16px; color: #777777;}
+      .con_anli{width: 1100px; height: 283px;margin: 26px auto;}
+      .con_anli_nr{height: 230px;width: 1098px;border:1px solid #e1e1e1; border-top: 0px;position: relative;overflow: hidden;}
+      .con_anli_l,.con_anli_r{width: 32px;height: 230px;text-align: center;z-index: 2;background: #fff;}
+      .con_anli_l img{padding-left: 0px;padding-top: 96px;}
+      .con_anli_r img{padding-left: 8px;padding-top: 96px;}
+      .con_anli_l{position: absolute;top: 0;left: 0;}
+      .con_anli_r{position: absolute;top: 0;right: 0px;}
+      .con_anli_l:hover,.con_anli_r:hover{background: #f4f4f4;cursor: pointer;}
+      .con_anlinr_main{width: 1030px;position: absolute;top: 0px;left:32px;height: 230px;overflow: hidden;}
+      .con_anli_nr_main{width: 4000px;position: absolute;top: 0px;left:0px;height: 230px;z-index: 1;}
+      .con_anli_list{width: 182px; height:230px;margin:0 13px;float: left;}
+      .con_anli_list img{border:1px solid #e1e1e1;margin-top: 26px; margin-bottom: 5px;}
+      .con_anli_list p{line-height: 28px;padding-left: 19px;padding-right: 19px;font-size: 16px;text-align: center;}
+  </style>
+</head>
+<body>
+  <div class="con_anli">
+    <div class="outer_top">
+      客户案例
+      <a href="">more</a>
+    </div>
+    <div class="con_anli_nr">
+      <div class="con_anli_l">
+        <img src="images/con_anli_leftbg.png" alt=""></div>
+      <div class="con_anlinr_main">
+        <div class="con_anli_nr_main">
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人1</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人2</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人3</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人4</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人5</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人6</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人7</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人8</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人9</p>
+          </div>
+          <div class="con_anli_list">
+            <img src="images/con_anli_pic1.png" alt="">
+            <p>八零后放弃大学专职炒股变炒股达人10</p>
+          </div>
+        </div>
+      </div>
+      <div class="con_anli_r">
+        <img src="images/con_anli_rightbg.png" alt=""></div>
+    </div>
+  </div>
+
+  <script>
+    $(function(){
+      var n = 0;
+      var ul = $('.con_anli_nr_main');
+      var liwidth = $('.con_anli_list').width();
+      var lilength = parseInt($('.con_anli_list').length/5);
+      //console.log(lilength);
+      var listnr = $('.con_anli_nr_main').html();
+          ul.append(listnr);
+      var lastClickTime = new Date().getTime();
+      var delay = 2000; // transition的延迟
+      //console.log(listnr);
+        $('.con_anli_l').on('click',function(){
+          if (new Date().getTime() - lastClickTime < delay) {
+            return;
+          }
+          lastClickTime = new Date().getTime();
+            if( n >= lilength){
+              ul.css('left','0px');
+              n = 0;
+            }
+            ulleft = parseInt(ul.css('left'));
+            n++
+            ul.animate({"left":ulleft-(liwidth+26)*5+"px"},delay);
+            //ul.stop();
+            return false;
+        });
+        $('.con_anli_r').on('click',function(){
+          if (new Date().getTime() - lastClickTime < delay) {
+            return;
+          }
+          lastClickTime = new Date().getTime();
+          //console.log(n);
+            if( n <= 0){
+              ul.css('left',"-2080px");
+              //console.log(n);
+              n = lilength;
+            }
+            ulleft = parseInt(ul.css('left'));
+            n--
+            ul.animate({"left":ulleft+(liwidth+26)*5+"px"},delay);
+        });
+    });
+</script>
+</body>
+</html>
