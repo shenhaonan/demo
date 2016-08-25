@@ -1,0 +1,538 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv ="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>股票网页正式版</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/jizhi1.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var key = 0;
+            var m = $('.jz_hezuo .col-xs-1')
+            $.each(m, function (key, val) {
+                m.eq(12 * key + 1).css('padding-left', '4px');
+                m.eq(12 * key + 2).css('padding-left', '8px');
+                m.eq(12 * key + 3).css('padding-left', '12px');
+                m.eq(12 * key + 4).css('padding-left', '16px');
+                m.eq(12 * key + 5).css('padding-left', '20px');
+                m.eq(12 * key + 6).css('padding-left', '24px');
+                m.eq(12 * key + 7).css('padding-left', '28px');
+                m.eq(12 * key + 8).css('padding-left', '32px');
+                m.eq(12 * key + 9).css('padding-left', '36px');
+                m.eq(12 * key + 10).css('padding-left', '40px');
+                m.eq(12 * key + 11).css('padding-left', '40px');
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row jz_top">
+            <div class="col-xs-12" style="padding:0;">
+                <div class="row row_z" >
+                    <div class="col-xs-12 text-right">
+                        <a href="官网注册.html">注册</a>
+                        <a href="#">登陆</a>
+                        <a href="官网找回密码.html">找回密码</a>
+                        <a href="官网找回论坛用户名.html">找回用户名</a>
+                        <a href="官网修改论坛用户名.html">修改用户名</a>
+                    </div>
+                </div>
+                <hr style="background: #ccc; " />
+            </div>
+        </div>
+        <div class="row row_z jz_head">
+            <div class="col-xs-6">
+                <a href="#"><img src="images/jz_logo.png" alt="" /></a>
+            </div>
+            <div class="col-xs-6 text-right" style="position:relative;">
+                <span class="jz_phone">全国<em style="color:red;">服务热线</em></span>
+                <img src="images/jz_phone.png" alt="" />
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-xs-12 jz_nav">
+                <ul class="nav nav-pills" style="width: 1024px; margin: 0 auto; background: #ee1c23;">
+                    <li role="presentation" class="active"><a href="">首页</a></li>
+                    <li role="presentation"><a href="">体验中心</a></li>
+                    <li role="presentation"><a href="">视频演示</a></li>
+                    <li role="presentation"><a href="">招商加盟</a></li>
+                    <li role="presentation"><a href="">支付中心</a></li>
+                    <li role="presentation"><a href="">软件下载</a></li>
+                    <li role="presentation"><a href="">关于我们</a></li>
+                    <li role="presentation"><a href="">联系我们</a></li>
+                    <li role="presentation"><a href="">K线股票论坛</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row row_z" style="margin-top:33px;">
+            <div class="col-xs-9" style="padding:0;">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="images/tu1.png" alt="...">
+                            <!--<div class="carousel-caption">
+                            11111111.
+                        </div>-->
+                        </div>
+                        <div class="item">
+                            <img src="images/tu1.png" alt="...">
+                            <!--<div class="carousel-caption">
+                            11111111.
+                        </div>-->
+                        </div>
+                        <div class="item">
+                            <img src="images/tu1.png" alt="...">
+                            <!--<div class="carousel-caption">
+                            11111111.
+                        </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3 text-right">
+                <div class="panel panel-default jz_tiyan">
+                    <div class="panel-body" style="padding-bottom:19px; padding-top:30px;">
+                        <form class="form-horizontal" role="form" style="position:relative;">
+                            <div class="form-group">
+                                <label for="firstname" class="col-sm-4 control-label">姓名+</label>
+                                <div class="col-sm-10" style="padding-left: 0; padding-right: 20px;">
+                                    <input type="text" class="form-control" id="firstname" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="col-sm-4 control-label">手机+</label>
+                                <div class="col-sm-10" style="padding-left:0;padding-right:20px;">
+                                    <input type="text" class="form-control" id="lastname" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group" style="position:absolute;right:41px;top:20px;">
+                                <div class="col-sm-offset-1 col-sm-11" style="padding:0;">
+                                    <button type="submit" class="btn btn-default btn-dj">点击发送</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="jz_dj">
+                    <a href="#"><img src="images/dj1.png" alt="" /></a>
+                </div>
+                <div class="jz_dj">
+                    <a href="#"><img src="images/dj2.png" alt="" /></a>
+                </div>
+                <div class="jz_dj">
+                    <a href="#"><img src="images/dj3.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="row row_z">
+            <div id="demo" style="overflow:hidden; width:1024px;">
+                <table border="0" align="center" cellpadding="1" cellspacing="1" cellspace="0">
+                    <tr>
+                        <td id="demo1" valign="top" bgcolor="ffffff" style="white-space: nowrap;">
+                            香港恒指 21914.4 ↑32.25 ↑0.15% &nbsp;&nbsp;香港恒指 21914.4 ↑32.25 ↑0.15% &nbsp;&nbsp;香港恒指 21914.4 ↑32.25 ↑0.15% &nbsp;&nbsp;香港恒指 21914.4 ↑32.25 ↑0.15% &nbsp;&nbsp;香港恒指 21914.4 ↑32.25 ↑0.15% &nbsp;&nbsp;香港恒指 21914.4 ↑32.25 ↑0.15% &nbsp;&nbsp;
+                        </td>
+                        <td id="demo2" valign="top" style="white-space: nowrap;"></td>
+                    </tr>
+                </table>
+            </div>
+            <script type="text/javascript">
+                var speed = 30;
+                var demo = $("#demo");
+                var demo1 = $("#demo1");
+                var demo2 = $("#demo2");
+                demo2.html(demo1.html());
+                function Marquee() {
+                    if (demo.scrollLeft() >= demo1.width())
+                        demo.scrollLeft(0);
+                    else {
+                        demo.scrollLeft(demo.scrollLeft() + 1);
+                    }
+                }
+                var MyMar = setInterval(Marquee, speed)
+                demo.mouseover(function () {
+                    clearInterval(MyMar);
+                })
+                demo.mouseout(function () {
+                    MyMar = setInterval(Marquee, speed);
+                })
+            </script>
+        </div>
+        <div class="row row_z" style="margin-top:70px;">
+            <div class="col-xs-12 lm_top" style="padding:0">
+                <div class="col-sm-offset-5 col-sm-2" style="padding:0;">
+                    <span>特色视频</span>
+                </div>
+            </div>
+            <div class="col-xs-12 lm_top1" style="padding:0">
+                <hr />
+            </div>
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-3" style="padding:0">
+                        <div class="panel panel-default jz_shipin">
+                            <div class="panel-heading">
+                                特色功能&nbsp;&nbsp;&nbsp;视频演示
+                            </div>
+                            <div class="panel-body" style="padding-left:21px;">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">预警指标自动交易<p>兼容大智慧、通达信、操盘手等行情软件选</p></a></li>
+                                    <li class="list-group-item"><a href="#">预警指标自动交易<p>兼容大智慧、通达信、操盘手等行情软件选</p></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <img src="images/shipin.png" alt="Alternate Text" class="img-responsive" />
+                    </div>
+                    <div class="col-xs-4" style="padding:0">
+                        <div class="panel panel-default jz_new">
+                            <div class="panel-heading">
+                                <span>行业动态</span>
+                                <a href="#" style="float: right; color: #29272a;">more</a>
+                            </div>
+                            <div class="panel-body" style="">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-duplicate"></span><a href="#">操盘手做盘特技—机智股票自动交易</a></li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-duplicate"></span><a href="#">操盘手做盘特技—机智股票自动交易</a></li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-duplicate"></span><a href="#">操盘手做盘特技—机智股票自动交易</a></li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-duplicate"></span><a href="#">操盘手做盘特技—机智股票自动交易</a></li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-duplicate"></span><a href="#">操盘手做盘特技—机智股票自动交易</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row_z" style="margin-top:70px;">
+            <div class="col-xs-12 lm_top">
+                <div class="col-sm-offset-5 col-sm-2" style="padding:0;">
+                    <span>产品中心</span>
+                </div>
+            </div>
+            <div class="col-xs-12 lm_top1">
+                <hr />
+            </div>
+            <div class="col-xs-12">
+                <div class="row jz_chanpin">
+                    <div class="col-xs-3">
+                        <div class="thumbnail">
+                            <a href="#"><img src="images/1.jpg" alt="..."></a>
+                            <div class="caption">
+                                <h3><a href="#">大智慧策略投资终端  季卡￥9,800元</a></h3>
+                                <p>新LEVEL-2数据、微策略、最关注、舆情监控等六大全新功能</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="thumbnail">
+                            <a href="#"><img src="images/1.jpg" alt="..."></a>
+                            <div class="caption">
+                                <h3><a href="#">大智慧策略投资终端  季卡￥9,800元</a></h3>
+                                <p>新LEVEL-2数据、微策略、最关注、舆情监控等六大全新功能</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="thumbnail">
+                            <a href="#"><img src="images/1.jpg" alt="..."></a>
+                            <div class="caption">
+                                <h3><a href="#">大智慧策略投资终端  季卡￥9,800元</a></h3>
+                                <p>新LEVEL-2数据、微策略、最关注、舆情监控等六大全新功能</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="thumbnail">
+                            <a href="#"><img src="images/1.jpg" alt="..."></a>
+                            <div class="caption">
+                                <h3><a href="#">大智慧策略投资终端  季卡￥9,800元</a></h3>
+                                <p>新LEVEL-2数据、微策略、最关注、舆情监控等六大全新功能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row_z" style="margin-top:70px;">
+            <div class="col-xs-12 lm_top">
+                <div class="col-sm-offset-5 col-sm-2" style="padding:0;">
+                    <span>关于机智</span>
+                </div>
+            </div>
+            <div class="col-xs-12 lm_top1">
+                <hr />
+            </div>
+            <div class="col-xs-12">
+                <div class="row jz_jz">
+                    <div class="col-xs-4">
+                        <span class="glyphicon glyphicon-saved"></span>
+                        <h3>机智软件区间交易</h3>
+                        <p>机智股票自动交易软件不预测不分析股票未来走势，也不研究基本面任何信息，通过同时设定上涨、横盘、利操作，小钱变大钱！</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="glyphicon glyphicon-saved"></span>
+                        <h3>机智软件止亏止盈</h3>
+                        <p>机智股票程序化交易软件帮您自动跟踪股票价格实时行情！在股票大涨时自动提高止盈位帮助您锁定已经获得利润自动交易不坐</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="glyphicon glyphicon-saved"></span>
+                        <h3>联系我们</h3>
+                        <p>客服中心：4008-3132-58</p>
+                        <p>客服QQ：545012530</p>
+                        <p>体验QQ群：166873850(申请体验）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row_z" style="margin-top:70px;">
+            <div class="col-xs-12 lm_top">
+                <div class="col-sm-offset-5 col-sm-2" style="padding:0;">
+                    <span>机智合作伙伴</span>
+                </div>
+            </div>
+            <div class="col-xs-12 lm_top1">
+                <hr />
+            </div>
+            <div class="col-xs-12 jz_hezuo">
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#">广东省</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="padding:0;">
+                <hr class="jz_foot_hr" />
+            </div>
+        </div>
+        <div class="row" style="background:#f1f1f1;">
+            <div class="col-xs-12">
+                <div class="row row_z" style="padding-top:30px;">
+                    <div class="col-xs-12 jz_link">
+                        友情链接:
+                        <a href="#">蚂蚁财富网</a>
+                        <a href="#">原油投资</a>
+                        <a href="#">P2P网贷平台哪家好</a>
+                        <a href="#">第一网贷</a>
+                        <a href="#">自动化交易软件</a>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row jz_kjlink">
+                            <div class="col-xs-4">
+                                <a href="#">玩转股市</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">行业动态</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">媒体关注</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">股市行情</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">公司相关</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">视频演示</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">代理信息</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">股票讲座</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">网站地图</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-6" style="padding-bottom:20px;">
+                        <div class="row">
+                            <div class="col-xs-6" style="padding-bottom:20px;color:#000;">
+                                关注我们
+                            </div>
+                            <div class="col-xs-6" style="padding-bottom:20px;color:#000;">
+                                在线客服
+                            </div>
+                            <div class="col-xs-2 text-center">
+                                <a href="#"><img src="images/foot_weixin.png" alt="" id="jz_ewm" /></a>
+                            </div>
+                            <div class="col-xs-2 text-center">
+                                <a href="#"><img src="images/foot_xinlang.png" alt="" /></a>
+                            </div>
+                            <div class="col-xs-2 text-center">
+                                <a href="#"><img src="images/foot_phone.png" alt="" /></a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#"><img src="images/foot_qq.png" alt="" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6" style="margin:50px 0;">
+                        <p>电话：4008-313-258（周一至周五：08：30-22：00  周末：9：30-21：00）</p>
+                        <p>邮件：jczii@sina.com</p>
+                        <p>地址：北京市昌平区黄平路19号院泰华龙旗广场2号楼（D座）</p>
+                    </div>
+                    <div class="col-xs-6" style="margin:50px 0;line-height:30px;">
+                        <p>风险提示:本软件为辅助工具,不含股票分析、策略、选股、荐股等功能,不保证用户收益,仅供参考,盈亏自负。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background: #d9d9d9;">
+            <div class="col-xs-12" style="padding:0;">
+                <div class="row row_z">
+                    <div class="col-xs-12" style="height:35px;line-height:35px;">
+                        备案号：京ICP备13047274号-1 中国国家版权局颁发计算机软件著作权登记证书：2012SR074912
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dynamic.js"></script>
+    <script>
+        $(function () {
+            $("#jz_ewm").popover({
+                trigger: 'hover',
+                placement: 'bottom', //placement of the popover. also can use top, bottom, left or right
+                title: "",
+                html: 'true', //needed to show html of course
+                content: '<div id="popOverBox"><img src="images/jz_ewm.png" width="251" height="201" /></div>',
+                animation: false
+            });
+        })
+    </script>
+    
+</body>
+</html>
