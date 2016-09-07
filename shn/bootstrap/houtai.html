@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机智后台系统</title>
+
+    <style>
+        body {
+            height: 100%;
+            font-size: 12px;
+            font-family: "微软雅黑";
+            overflow: hidden;
+            z-index: 1;
+        }
+        .head {
+            width: 100%;
+            height: 66px;
+            overflow: hidden;
+            z-index: 8;
+            position: relative;
+        }
+        .top {
+            height: 37px;
+            width: 100%;
+            background: url(../images/admin_top_bg.jpg) left top repeat-x;
+            overflow: hidden;
+            clear: both;
+        }
+            .top .top_logo {
+                width: 170px;
+                height: 37px;
+                float: left;
+            }
+            .top .top_link {
+                float: right;
+                padding: 5px 10px 0px 0px;
+            }
+                .top .top_link ul {
+                    float: left;
+                    padding: 8px 0px 0px 0px;
+                    line-height: 14px;
+                    overflow: hidden;
+                }
+                    .top .top_link ul li {
+                        float: left;
+                        color: #CBDAB3;
+                        border-right: 1px solid #61910F;
+                        margin-right: -1px;
+                    }
+                        .top .top_link ul li.welcome {
+                            border-right: none;
+                            color: #A8C280;
+                            padding-right: 6px;
+                        }
+                        .top .top_link ul li a {
+                            color: #CBDAB3;
+                            padding-left: 11px;
+                            padding-right: 11px;
+                            text-decoration: none;
+                        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="top">
+            <div class="top_logo"> <img src="images/style1/admin_top_logo.gif" width="200" height="37" alt="DedeCms Logo" title="Welcome use DedeCms" id="topdedelogo"> </div>
+            <div class="top_link">
+                <ul>
+                    <li class="welcome">您好：admin ，欢迎使用DedeCMS！</li>
+                    <li><a href="index_menu.php" target="menu">主菜单</a></li>
+                    <li><a href="#" onclick="JumpFrame('catalog_menu.php','public_guide.php');">内容发布</a></li>
+                    <li><a href="#" onclick="JumpFrame('index_menu.php','content_list.php');">内容维护</a></li>
+                    <li><a href="#" onclick="JumpFrame('index_menu.php','index_body.php');">系统主页</a></li>
+                    <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
+                    <li><a href="../member" target="_blank">会员中心</a></li>
+                    <li><a href="exit.php" target="_top">注销</a></li>
+                </ul>
+                <div class="quick">
+                    <a href="#" class="ac_qucikmenu" id="ac_qucikmenu">快捷方式</a> <a href="#" class="ac_qucikadd" id="ac_qucikadd">
+                        <!--ADD-->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+</body>
+</html>

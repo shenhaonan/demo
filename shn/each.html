@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<table id="table-stocklist">
+    <tr>
+        <td>1</td><td>jdkf</td>
+    </tr>
+    <tr>
+        <td>2</td><td>dfdf</td>
+    </tr>
+    <tr>
+        <td>3</td><td>dfdf</td>
+    </tr>
+</table>
+</body>
+<script>
+$(function(){
+    var codes = "";
+    $.each($("#table-stocklist tr"), function () { codes += $(this).children("td").eq(1).text() + ",";});
+    alert(codes);
+})
+</script>
+</html>

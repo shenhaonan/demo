@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        function copyUrl2()
+        {
+        var Url2=document.getElementById("copy1");
+        Url2.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+        alert("已复制好，可贴粘。");
+        }
+    </script>
+    <style>
+        .div1{background: red;}
+        .div2{height: 20px;width: 200px;}
+    </style>
+</head>
+<body>
+    <input type="text" id="copy" disabled="disabled" value="1111111">
+    <input type="text" id="copy1" style="height:0px;border:none;" value="121231111132">
+
+    <textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
+    <input type="button" onClick="copyUrl2()" value="点击复制代码" />
+    <div class="div1">
+        <div class="div2">1111</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>聊天</title>
+  <script src="http://www.lbboke.com/js/jquery-1.8.0.min.js"></script>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body,
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+  }
+  
+  .main {
+    width: 650px;
+  }
+  
+  .main>* {
+    float: left;
+  }
+  
+  .user {
+    padding-right: 50px;
+  }
+  
+  .user section {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    padding: 30px;
+  }
+  
+  .user input[type=text] {
+    width: 100%;
+  }
+  
+  #send1 {
+    background-color: dodgerblue;
+  }
+  
+  #send2 {
+    background-color: forestgreen;
+  }
+  
+  .box {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    width: 300px;
+    height: 500px;
+    overflow-y: auto;
+  }
+  
+  .box li {
+    padding: 10px;
+    position: relative;
+    min-height: 60px;
+  }
+  
+  .box li:before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+  }
+  
+  .box .left {
+    padding-left: 60px;
+  }
+  
+  .box .left:before {
+    left: 10px;
+    background: url(img/u1.jpg);
+    background-size: cover;
+  }
+  
+  .box .right {
+    padding-right: 60px;
+    text-align: right;
+  }
+  
+  .box .right:before {
+    right: 10px;
+    background: url(img/u2.jpg);
+    background-size: cover;
+  }
+  
+  .box span {
+    word-break: break-all;
+    border-radius: 5px;
+    background: #fff;
+    line-height: 30px;
+    display: inline-block;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  .box .right span {
+    background: lime;
+  }
+  </style>
+</head>
+
+<body onunload="alert('函数')">
+  <div class="main">
+    <div class="user">
+      <section>
+        <input type="text" id="user1-mess">
+        <input type="button" id="send1" value="发送"> </section>
+      <section>
+        <input type="text" id="user2-mess">
+        <input type="button" id="send2" value="发送"> </section>
+    </div>
+    <div class="box">
+      <ul id="mess-list"></ul>
+    </div>
+  </div>
+</body>
+<script>
+$(window).on('close', function() {
+    alert('我要关闭了');
+  })
+  //        获取id的函数封装
+function $(id) {
+  return document.getElementById(id);
+}
+var messFir = $('user1-mess');
+var messSec = $('user2-mess');
+var list = $('mess-list');
+//        第一个按钮的点击事件
+$('send1').onclick = function() {
+  createMess(messFir.value, 'left');
+  messFir.value = '';
+};
+//        第二个按钮的点击事件
+$('send2').onclick = function() {
+  createMess(messSec.value, 'right');
+  messSec.value = '';
+};
+//        接收到信息后创建一个li标签
+function createMess(text, style) {
+  var li = document.createElement('li');
+  li.className = style;
+  var span = document.createElement('span');
+  span.innerText = text;
+  //            将span添加到li标签下边儿
+  li.appendChild(span);
+  //            将li标签添加到ul下边儿
+  list.appendChild(li);
+}
+</script>
+
+</html>

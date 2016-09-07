@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>鼠标拖动div</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/container.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lanrenzhijia.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    .container{ width:714px; height: 394px; position: absolute; margin-top: -197px; margin-left: -357px; left: 50%; top: 50%; border: 1px solid red;/*background: url(images/shezhi_bg.png) no-repeat;*/ font-size: 12px;
+    }
+    /*.container .nav-tabs{top:53px;}
+    .container .nav-tabs li a{ width: 58px; height: 17px;}*/
+    .container_head{ height: 45px;
+          background: -webkit-linear-gradient(#f1533a, #e64028); /* Safari 5.1 - 6.0 */
+          background: -o-linear-gradient(#f1533a, #e64028); /* Opera 11.1 - 12.0 */
+          background: -moz-linear-gradient(#f1533a, #e64028); /* Firefox 3.6 - 15 */
+          background: linear-gradient(#f1533a, #e64028); /* 标准的语法 */}
+    .shezhi_list .nav-tabs{margin-top: 9px;}
+    .shezhi_list .nav-tabs li{width: 85px; height: 25px;line-height: 25px; padding: 0px;text-align:center; color: #fff; background: #ef4c39;margin-right: 0px;border-radius: 0px;}
+    .shezhi_list .nav-tabs li a{width: 85px; height: 25px;line-height: 25px; padding: 0px;text-align:center; color: #fff;margin-right: 0px;border-radius: 0px;}
+    .shezhi_list .nav-tabs li.active a{color: #454545;}
+    .jysz{ padding-left: 24px; }
+    .jysz .checkbox{ margin-top: 22px; margin-bottom: 22px;}
+    .container .jysz-dx{position: relative;z-index: 2; top: 9px;background: #fff; display: block; width: 55px; text-align: center; left: 5px; clear: both;}
+    .jysz .btn-qd,.jysz .btn-qx{position: absolute; bottom: 10px; right: 20px; width: 67px; height: 22px;font-size: 12px; line-height: 22px;padding: 0px;}
+    .container label{ font-weight:normal; letter-spacing: 2px;}
+    .xtsz label{font-weight: bold; line-height: 20px; margin-top: 10px;}
+    .xtsz{padding-left: 46px; }
+    .xtsz .xtsz_tu img{ margin-right: 20px;}
+    .kjzsz-left,.kjzsz-right{padding-top: 30px;}
+    .kjzsz-left .col-sm-6{padding: 12px 0px; line-height: 20px;}
+    .kjzsz-left .control-label{margin-bottom:0px; padding-left: 50px; letter-spacing: 2px;}
+    .kjzsz-left input.form-control,.kjzsz-right input.form-control,.jysz input.form-control{ height: 20px; line-height: 20px;box-shadow: inset 2px 2px 1px #666; border-radius: 0px; padding: 0px 0px 0px 3px;}
+    .kjzsz-right .control-label{ margin-bottom: 0px; line-height: 20px; letter-spacing: 2px;}
+    .kjzsz-right .form-group{padding-left: 45px; padding-top: 10px; border:1px solid #d5dfe5; border-radius:4px; margin-top: 0px; margin-left: 15px;}
+    input[type="file"]{border: 1px solid #666; width: 398px;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row container_head">
+            <div class="col-xs-6"><img src="images/shezhi_logo.png" alt=""></div>
+            <div class="col-xs-6"><img src="images/shezhi_close.png" alt=""></div>
+        </div>
+        <div class="row shezhi_list">
+        <div class="col-xs-12">
+        <ul id="myTab" class="nav nav-tabs">
+           <li class="active">
+              <a href="#jysz" data-toggle="tab">
+                 交易设置
+              </a>
+           </li>
+           <li><a href="#ghpf" data-toggle="tab">更换皮肤</a></li>
+           <li><a href="#xtsz" data-toggle="tab">系统设置</a></li>
+           <li><a href="#kjzsz" data-toggle="tab">快捷键设置</a></li>
+        </ul>
+        </div>
+        <div id="myTabContent" class="tab-content">
+           <div class="tab-pane fade in active" id="jysz">
+              <form class="jysz">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">当委托提交成功10秒后没有成功交易，将撤单重新
+                        <select class="">
+                          <option>即时价</option>
+                          <option>买一和卖一</option>
+                          <option>买二和卖二</option>
+                          <option>买三和卖三</option>
+                          <option>买四和卖四</option>
+                          <option>买五和卖五</option>
+                        </select>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">同一天股票，当天不同预警任务可重复下单
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">开启短信提醒
+                    </label>
+                  </div>
+                  <span class="jysz-dx">短信提醒</span>
+                  <div class="form-group col-xs-9" style="padding:9px 0px 9px 25px; border:1px solid #d5dfe5; border-radius:4px;">
+                      <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">任务触发后立即发送
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">任务触发并且交易成功时发送
+                      </label>
+                  </div>
+                  <div style="clear:both;"></div>
+                  <span class="jysz-dx" style="width:95px;">接受短信手机号</span>
+                  <div class="form-group col-xs-9" style="padding:13px 0px 4px 25px; border:1px solid #d5dfe5; border-radius:4px;">
+                    <div class="col-sm-5" style="padding:0px;">
+                      <input type="text" class="form-control" id="inputText" style="height:22px;">
+                    </div>
+                    <label for="inputPassword" class="col-sm-7 control-label" style="line-height:22px;">最多输入3个手机号，连续输入即可。</label>
+                  </div>
+                  <button type="button" class="btn btn-default btn-qd" style="right:100px;">确定</button>
+                  <button type="button" class="btn btn-default btn-qx">取消</button>
+                </form>
+           </div>
+           <div class="tab-pane fade" id="ghpf">
+              
+           </div>
+           <div class="tab-pane fade" id="xtsz">
+              <form class="xtsz">
+                <div class="checkbox" style="margin-top:15px; line-height:20px;">
+                  <label>
+                    <input type="checkbox" style="font-weight:bold;">开启音效
+                  </label>
+                </div>
+
+                  <span class="jysz-dx">音效设置</span>
+                <div>
+                    <div class="col-xs-11" style="border:1px solid #d5dfe5; border-radius:4px; padding:18px 0px 18px 24px;">
+                    <div class="row" style="padding-left:15px;">
+                        <div class="col-xs-1" style="padding:10px 0px; line-height:20px;">
+                            买入股票
+                        </div>
+                        <div class="col-xs-8" style="padding:10px 0px; padding-left:9px;">
+                            <input type="file" id="exampleInputFile">
+                        </div>
+                        <div class="col-xs-3 xtsz_tu" style="padding:10px 0px; padding-left:15px; height:42px;">
+                            <a href=""><img src="images/xtsz_tu1.png" alt=""></a>
+                            <a href=""><img src="images/xtsz_tu2.png" alt=""></a>
+                            <a href=""><img src="images/xtsz_tu3.png" alt=""></a>
+                        </div>
+                        </div>
+                        <div class="row" style="padding-left:15px;">
+                        <div class="col-xs-1" style="padding:10px 0px; line-height:20px;">
+                            卖出股票
+                        </div>
+                        <div class="col-xs-8" style="padding:10px 0px; padding-left:9px;">
+                            <input type="file" id="exampleInputFile1">
+                        </div>
+                        <div class="col-xs-3 xtsz_tu" style="padding:10px 0px; padding-left:15px; height:42px;">
+                            <a href=""><img src="images/xtsz_tu1.png" alt=""></a>
+                            <a href=""><img src="images/xtsz_tu2.png" alt=""></a>
+                            <a href=""><img src="images/xtsz_tu3.png" alt=""></a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="form-group col-xs-12" style="padding:9px 0px 9px 0px;">
+                      <label class="checkbox-inline">
+                        <input type="checkbox">任务触发后立即发送
+                      </label>
+                      <label class="checkbox-inline" style="margin-top:10px;">
+                        <input type="checkbox">任务触发并且交易成功时发送
+                      </label>
+                  </div>
+                  <button type="button" class="btn btn-default btn-pass">修改密码</button>
+              </form>
+           </div>
+           <div class="tab-pane fade" id="kjzsz">
+              <form class="kjzsz">
+                  <div class="form-group col-xs-6 kjzsz-left">
+                    <label for="" class="col-sm-6 control-label">读取股票代码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="input">
+                    </div>
+                    <label for="" class="col-sm-6 control-label">保存方案</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="input">
+                    </div>
+                    <label for="" class="col-sm-6 control-label">调取方案</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="input">
+                    </div>
+                    <label for="" class="col-sm-6 control-label">预警买入公式</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="input">
+                    </div>
+                    <label for="" class="col-sm-6 control-label">预警卖出公式</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="input">
+                    </div>
+                  </div>
+                  <div class="form-group col-xs-6 kjzsz-right">
+                    <label for="" class="col-sm-3 control-label">隐藏键</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="input">
+                    </div>
+                    <div style="clear:both;"></div>
+                  <span class="jysz-dx" style="left:20px;">隐藏设置</span>
+                    <div class="form-group col-xs-9">
+                      <label class="radio">
+                        <input type="radio" name="RadioOptions" id="Radio1" value="option1">隐藏到托盘
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="RadioOptions" id="Radio2" value="option2">隐藏程序和托盘图标
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" name="Checkbox" id="Check">最小化包括关联行情软件
+                      </label>
+                    </div>
+                  <span class="jysz-dx" style="left:20px;">退出设置</span>
+                    <div class="form-group col-xs-9">
+                      <label class="radio">
+                        <input type="radio" name="RadioOptions2" id="Radio1" value="option1">退出时隐藏到托盘
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="RadioOptions2" id="Radio2" value="option2">退出时退出程序
+                      </label>
+                    </div>
+                  </div>
+              </form>
+           </div>
+        </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    $(function(){
+        var t = false,x,y,a,b;
+            element = $(".container")
+        $('.container').mouseup(function(){
+            t = false;
+        }).mousedown(function(e){
+            var position = element.position();  
+                pageX = event.pageX-position.left; //鼠标和DIV的相对坐标  
+                pageY = event.pageY-position.top;
+                t = true;
+        }).mousemove(function(e){
+            if(t){
+                // var x = $('.container').offsetTop;
+                // var x1 = e.clientX;
+                // alert(x1);
+                console.log(a+','+b);
+                var x = e.pageX-pageX;              
+                var y = e.pageY-pageY;
+                $('.container').css('left',x);
+                $('.container').css('top',y);
+            }
+        })
+    })
+    </script>
+  </body>
+
+</html>

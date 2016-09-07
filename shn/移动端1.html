@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动端1</title>
+    <script>
+        var pixclPatio = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');
+
+        var html = document.getElementsByTagName('html')[0];
+        var pageWidth = html.getBoundingClientRect().width;
+        html.style.fontSize = pageWidth / 16 + 'px';
+    </script>
+    <style>
+    body,html{margin: 0;padding: 0;}
+    h3{margin:0; }
+    ul{margin: 0;padding: 0;list-style: none;}
+    img{border: none;vertical-align: top;}
+    a{text-decoration: none;color: #818788;}
+    body{width: 100%;height: 100%;font-size: 0.5rem; overflow: auto;}
+    .clearfix:after{content: "";display: block;clear: both;}
+    .head_box{width: 100%;height: 1.85rem;position: fixed;background: #fabc09;}
+    .head_box .btn_type{float: left;width: 1.95rem;height: 1.85rem; background: url(phoneimages/ico-type.jpg) no-repeat 0.55rem 0.25rem; background-size: 0.825rem 1.375rem;}
+    .head_box .search_box{float: left;width: 12rem;height: 1.85rem;position: relative;}
+    .head_box .search_box:before{content: "";position: absolute;left: 0.4rem;top:0.625rem; width: 0.625rem;height: 0.575rem; background: url(phoneimages/ico-search.jpg) no-repeat; background-size: 0.55rem 0.575rem;}
+    .head_box .search_box .search_form{ padding-top: 0.35rem; height: 1.25rem;}
+    .head_box .search_box .search_form .search_input{float: left;width: 12rem; height: 1.25rem; background-color: #d5dba9;border-radius: 0.15rem;padding-left: 1.275rem;box-sizing:border-box;font-size: 0.5rem;}
+    .head_box .shop_car{ float: left;width: 2.05rem;height: 1.85rem;background:url(phoneimages/ico-shopCar.jpg) no-repeat 0.425rem 0.2rem; background-size: 1.25rem 1.4rem;}
+    .warp{width: 100%; padding-top: 1.85rem;}
+    .banner{width: 100%; height: 6.8rem;}
+    .banner img{width: 100%;}
+    .nav{width: 100%;padding:0.45rem 0 0.05rem 0;box-sizing:border-box;background: #cce3d1;border-top: 1px solid #acd3b3;}
+    .nav .nav_item{float: left;width: 20%;height: 2.85rem;text-align: center;margin-bottom: 0.2rem;}
+    .nav .nav_item img{width: 1.7rem;height: 1.75rem;}
+    .nav .nav_item .nav_title{display: block;font-weight: normal;line-height: 1.1rem;}
+    .suning_tt{width: 100%;height: 2.175rem;background: #cce3d1;margin-top: 2px;}
+    .suning_tt .tt_title{float: left;width: 3.475rem;height: 2.175rem;background: url(phoneimages/ico-tt.jpg) no-repeat 0 0.55rem; background-size: 3.1rem 1.025rem;}
+    .suning_tt .tt_line{float: left;width: 1px; height: 0.825rem;background-color: #97c1a0;margin-top: 0.675rem;}
+    .suning_tt .tt_list{float: left;width: 10.75rem;height: 2.175rem;padding-top: 0.35rem;box-sizing:border-box;margin-left: 0.8rem;}
+    .suning_tt .tt_list .item{ display: block;line-height: 0.7rem;background: url(phoneimages/ico-list.jpg) no-repeat 0 0.25rem;background-size: 0.15rem 0.15rem;text-indent: 0.425rem;}
+    .shoping_type{margin-top: 0.475rem;}
+    .shoping_type .type_top{height: 6.2rem;overflow: hidden;}
+    .shoping_type .type_top a { float: left;}
+    .shoping_type .type_top .big_img{ width: 7.975rem; height: 6.2rem;margin-right: 1px;}
+    .shoping_type .type_top .big_img img{width: 7.975rem; height: 6.2rem;}
+    .shoping_type .type_top .sub_img{width: 7.975rem;height: 3.075rem;margin-bottom: 1px;}
+    .shoping_type .type_top .sub_img img{width: 7.975rem;height: 3.075rem;}
+    .shoping_type .bottom_item{float: left;margin: 0 1px 1px 0;}
+    .shoping_type .bottom_item img{width: 3.975rem;height: 6.425rem;}
+    .suning_qg{ width: 100%;height: 6.425rem;background-color: #cce3d1;margin-top: 33px;padding-left: 0.4rem;box-sizing:border-box;}
+    .suning_qg .head{ width: 100%;height: 1.35rem;}
+    .suning_qg .head .head_left{float: left;}
+    .suning_qg .head .head_left .title{ float: left;width: 2.9rem;height: 1rem;margin-right: 0.4rem;background: url(phoneimages/title-qg.jpg) no-repeat; background-size: 2.9rem 1rem;}
+    .suning_qg .head .head_left .time_box{float: left;padding-top: 0.35rem;}
+    .suning_qg .head .head_left .time_box .time_name{ float: left;font-size: 0.45rem;color: #f94f4e;}
+    .suning_qg .head .head_left .time_box .update_time{ float: left;}
+    .suning_qg .head .head_left .time_box .update_time .time_item{ float: left;width: 0.5rem;height: 0.5rem;border: 1px solid #809474;border-radius: 0.1rem;text-align: center;line-height: 0.5rem;color: #383938;margin: 0 0.2rem;}
+    .suning_qg .head .head_left .time_box .update_time .time_ico{ float: left;}
+    .suning_qg .head .head_left .time_box .update_time .tips{ color: #ff3739;border-color: #ff3739;}
+    .suning_qg .head .head_right{ float: right;padding: 0.275rem 0.5rem 0 0;}
+    .suning_qg .head .head_right .more{ float: left;width: 2.6rem;height: 0.725rem;line-height: 0.725rem;font-size: 0.45rem;text-align: center;background-color: #ffc001;border-radius: 0.3rem;color: #456c24;margin-right: 0.05rem;}
+    .suning_qg .head .head_right .ico_more{ float: left;width: 0.375rem;height: 0.625rem;background: url(phoneimages/ico-sj.jpg) no-repeat; background-size:100%; }
+    .suning_qg .shoping_list{ width: 200%;}
+    .suning_qg .shoping_list .list_item{ width: 4.75rem;float: left;margin-right: 0.2rem;}
+    .suning_qg .shoping_list .list_item .item_img{ display: block;width: 4.7rem;border: 1px solid #b2cdb1;}
+    .suning_qg .shoping_list .list_item .item_img img{ width: 100%;}
+    .suning_qd .shoping_list .list_item .item_bottom{ box-sizing:border-box; width: 100%;height: 1.425rem;background-color: #ddd;position: relative;}
+    .suning_qg .shoping_list .list_item .item_bottom .jiage{ display: block;color: #dc0000;line-height: 0.7rem;}
+    .suning_qg .shoping_list .list_item .item_bottom .yuanjia{ display: block;font-size: 0.4rem;line-height: 0.6rem;color: #999}
+    .suning_qg .shoping_list .list_item .item_bottom .zhekou{ box-sizing:border-box;position: absolute;right: 0.15rem;top: -0.15rem;width: 1.525rem;height: 1.525rem;padding-top: 0.25rem;background: url(phoneimages/ico-zhekou.jpg) no-repeat;background-size: 100%;text-align: center;color: #fff;}
+    .suning_qg .shoping_list .list_item .item_bottom .zhekou .big_font{ font-size: 0.55rem;}
+    .suning_qg .shoping_list .list_item .item_bottom .zhekou .big_font span{ font-size: 0.45rem;}
+    .shoping_box{ width: 100%;overflow: hidden;}
+    </style>
+</head>
+<body>
+    <header class="head_box">
+        <a href="" class="btn_type"></a>
+        <div class="search_box">
+            <form action="" class="search_form">
+                <input type="text" class="search_input" placeholder="最后">
+            </form>
+        </div>
+        <a href="" class="shop_car"></a>
+    </header>
+    <section class="warp">
+        <ul class="banner">
+            <li>
+                <img src="phoneimages/banner.jpg" alt="">
+            </li>
+        </ul>
+        <nav class="nav clearfix">
+            <a href="" class="nav_item">
+                <img src="phoneimages/ico-nav.jpg" alt="">
+                <strong class="nav_title">大聚惠</strong>
+            </a>
+            <a href="" class="nav_item">
+                <img src="phoneimages/ico-nav.jpg" alt="">
+                <strong class="nav_title">大聚惠</strong>
+            </a>
+            <a href="" class="nav_item">
+                <img src="phoneimages/ico-nav.jpg" alt="">
+                <strong class="nav_title">大聚惠</strong>
+            </a>
+        </nav>
+        <div class="suning_tt">
+            <div class="tt_title"></div>
+            <div class="tt_line"></div>
+            <div class="tt_list">
+                <a href="" class="item">
+                    HTML5移动端布局实战开发课程
+                </a>
+                <a href="" class="item">
+                    HTML5移动端布局实战开发课程
+                </a>
+            </div>
+        </div>
+        <div class="shoping_type">
+            <div class="type_top">
+                <a href="" class="big_img">
+                    <img src="phoneimages/shoping-1.jpg" alt="">
+                </a>
+                <a href="" class="sub_img">
+                    <img src="phoneimages/shoping-2.jpg" alt="">
+                </a>
+                <a href="" class="sub_img">
+                    <img src="phoneimages/shoping-2.jpg" alt="">
+                </a>
+            </div>
+            <div class="type_bottom clearfix">
+                <a href="" class="bottom_item">
+                    <img src="phoneimages/shoping-3.jpg" alt="">
+                </a>
+                <a href="" class="bottom_item">
+                    <img src="phoneimages/shoping-3.jpg" alt="">
+                </a>
+                <a href="" class="bottom_item">
+                    <img src="phoneimages/shoping-3.jpg" alt="">
+                </a>
+                <a href="" class="bottom_item">
+                    <img src="phoneimages/shoping-3.jpg" alt="">
+                </a>
+                <a href="" class="bottom_item">
+                    <img src="phoneimages/shoping-3.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="suning_qg">
+            <header class="head">
+                <div class="head_left">
+                    <h3 class="title"></h3>
+                    <div class="time_box">
+                        <span class="time_name">
+                            20点场
+                        </span>
+                        <div class="update_time">
+                            <span class="time_item">03</span>
+                            <span class="time_ico">:</span>
+                            <span class="time_item">54</span>
+                            <span class="time_ico">:</span>
+                            <span class="time_item tips">20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="head_right">
+                    <a href="" class="more">
+                        吃货上新季
+                    </a>
+                    <i class="ico_more"></i>
+                </div>
+            </header>
+            <div class="shoping_box">
+                <ul class="shoping_list">
+                    <li class="list_item">
+                        <a href="" class="item_img">
+                            <img src="phoneimages/shoping-4.jpg" alt="">
+                        </a>
+                        <div class="item_bottom">
+                            <strong class="jiage">￥15.90</strong>
+                            <del class="yuanjia">￥50.90</del>
+                            <div class="zhekou">
+                                <span class="big_font">5.<span>8折</span></span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

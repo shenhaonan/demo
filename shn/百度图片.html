@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度图片</title>
+    <script src="http://www.lbboke.com/js/jquery-1.8.0.min.js"></script>
+    <script>
+    $(function(){
+        var oUl = $('.ul');
+        var text = '';
+        var rn = 0;
+        function getDate (oWord,lx,pn,rn){
+            oWord = oWord;
+            //pn = pn + rn;
+            rn = 10;
+            console.log(pn,rn);
+            $.ajax({
+                url:'http://image.baidu.com/search/aladdinjson',
+                data:{
+                    tn: 'resultjsonaladdin',
+                    ie: 'utf-8',
+                    oe: 'utf-8',
+                    pn: pn,
+                    rn: rn,
+                    z: '0',
+                    fr: 'alawise',
+                    word: oWord
+                },
+                dataType:'jsonp',
+                beforeSend:function(){
+                    console.log('加载前');
+                },
+                success:function(data){
+                    console.log(typeof(data));
+                    $('.jz').show();
+                    text = addimg(data.imgs);
+                    $('.lb').attr('item',pn);
+                    if(lx == 0){
+                        oUl.html(text);
+                    }else{
+                        oUl.append(text);
+                    }
+
+                },
+                error:function(){
+                    console.log('出错了');
+                }
+            })
+            function addimg(data){
+                var str = '';
+                $.each(data,function (key,val){
+                    str +='<li>'+ val.title+':'+val.thumbURL +'</li>';
+                })
+                return str;
+            }
+        }
+        $('.ss').on('click',function(){
+            var oWord = $('.word').val();
+
+            getDate(oWord,0,0,rn);
+        })
+        $('.dj').on('click',function(){
+            var oWord = $('.word').val();
+                rn = 10;
+                pn = $('.lb').attr('item');
+                pn = parseInt(pn) + parseInt(rn);
+            console.log(pn);
+            getDate(oWord,1,pn,rn);
+        })
+
+    })
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" name="word" class="word">
+        <button type="submit" class="ss">搜索</button>
+    </div>
+    <div class="lb" itme=''>
+        <ul class="ul"></ul>
+    </div>
+    <div class="jz" style="display:none;">
+        <button type="button" class="dj">加载更多</button>
+    </div>
+</body>
+</html>

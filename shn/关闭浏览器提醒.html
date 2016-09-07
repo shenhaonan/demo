@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>关闭浏览器提醒</title>
+  <script src="http://www.lbboke.com/js/jquery-1.8.0.min.js"></script>
+</head>
+
+<body>
+  1s11
+</body>
+<script type="text/javascript">
+// window.onbeforeunload = onbeforeunload_handler;
+window.onunload = onunload_handler;
+
+// function onbeforeunload_handler() {
+//   //alert('1');
+//   var warning = "确认退出?";
+//   return warning;
+//   alert('1');
+//   a();
+// }
+
+function onunload_handler() {
+  var warning = "谢谢光临";
+  //alert(warning);
+  a();
+}
+
+function a() {
+  console.log('2');
+}
+</script>
+
+</html>

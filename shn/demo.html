@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+        <script src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
+        <script src="js/jquery.contextmenu.r2.js"></script>
+    <style>
+        *{margin:0px; padding: 0px;}
+        body{ height: 100%; width: 100%;}
+        table{ border-collapse:collapse; border-color:#000000;}
+        table tr:first-child{background: red;}
+        .xian{display: none;;}
+    </style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false'>
+    <table width="400" border="1" cellspacing="0" cellpadding="0" id="demo1">
+        <tr>
+            <td>选择</td>
+            <td>名称</td>
+            <td>序号</td>
+            <td>好坏</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ></td>
+            <td>王</td>
+            <td>1</td>
+            <td>好</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>赵</td>
+            <td>2</td>
+            <td>坏</td>
+        </tr>
+    </table>
+    <div class="contextMenu" id="myMenu1">
+        <ul>
+            <li id="open">删除</li>
+            <li id="email">全部删除</li>
+        </ul>
+    </div>
+    <script>
+        //样式一JS代码
+        var demo =  $('#demo1 tr:nth-of-type(1n+2)');
+         demo.contextMenu('myMenu1',
+         {
+              bindings:
+              {
+                'open': function(t) {
+                    //执行事件
+                    $(t).remove();
+                },
+                'email': function(t) {
+                    //执行事件
+                    demo.find('input:checked').parents('tr').remove();
+
+                }
+              }
+
+        });
+         demo.on('click',function(){
+            var che = $(this).find('input').attr('checked');
+            if( che == "checked"){
+                $(this).find('input').attr('checked',false);
+            }else{
+                $(this).find('input').attr('checked','checked');
+            }
+
+         });
+         demo.find('input').on('click',function(){
+            var che1 = $(this).attr('checked');
+            if( che1 == "checked"){
+                $(this).attr('checked',false);
+            }else{
+                $(this).attr('checked','checked');
+            }
+
+         })
+    </script>
+</body>
+</html>

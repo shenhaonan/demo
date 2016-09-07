@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Loading.....</title>
+<meta charset="UTF-8">
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .robot-btwo{
+        width: 117px;
+        height: 117px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 80px auto 0;
+        text-align: center;
+        line-height: 117px;
+        font-size: 36px;
+        position: relative;
+        background: #e2e2e2;
+    }
+    .robot-btwo em{
+        z-index: 3;
+        color: #e2e2e2;
+    }
+    .ro-b{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+    }
+    .ro-a{
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 111px;
+        height: 111px;
+        background: #fff;     /*去掉可变成扇形加载*/
+        border-radius: 50%;
+        line-height: 111px;
+    }
+    .ro-b span{
+        display: block;
+        position: relative;
+        top:0;
+        left:0;
+    }
+    .ro-b1{
+        transform: rotate(0deg);
+    }
+    .ro-b span p{
+        display: block;
+        width: 4px;  /*调整宽度可虚线加载和实线加载 1 - 4 px*/
+        height: 80px;
+        background: #333;
+    }
+    .ro-b span p{
+        position: absolute;
+        transform:translate(-50%,-100%);
+        -moz-transform:translate(-50%,-100%);
+        -webkit-transform:translate(-50%,-100%);
+        -o-transform:translate(-50%,-100%);
+        -ms-transform:translate(-50%,-100%);
+    }
+</style>
+<script src="http://leishen.help/JSK/jq.js"></script>
+<script>
+    $(function(){
+        var roB = $('.ro-b'),
+            Du = 50,
+            degh = $('.ro-deg').html(),
+            deg = $('.ro-deg'),
+            i = 0;
+        //for(var i=0;i<degh;i++){
+        //    roac();
+        //}
+        function roac(){
+            var rop = '<p></p>'
+                rospan = '<span style="transform:rotate('+360/100*i+'deg)">'+rop+'</span>';
+                //rop = document.createElement('p');
+            roB.append(rospan);
+        }
+        var Troac = setInterval(function(){
+            if (i<100){
+                roac();
+                i++;
+                deg.html(i);
+            }else{
+                clearInterval(Troac);
+            };
+        },Du)
+    });
+</script>
+</head>
+<body>
+    <div class="robot-btwo">
+        <div class="ro-b"></div>
+        <div class="ro-a"><em class="ro-deg">0</em><em>%</em></div>
+    </div>
+</body>
+</html>

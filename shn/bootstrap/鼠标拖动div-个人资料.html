@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>鼠标拖动div</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/container.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lanrenzhijia.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .container {
+            width: 714px;
+            height: 394px;
+            position: absolute;
+            margin-top: -197px;
+            margin-left: -357px;
+            left: 50%;
+            top: 50%;
+            font-size: 12px;
+        }
+        /*.container .nav-tabs{top:53px;}
+            .container .nav-tabs li a{ width: 58px; height: 17px;}*/
+        .container_head {
+            height: 45px;
+            background: -webkit-linear-gradient(#f1533a, #e64028); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#f1533a, #e64028); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#f1533a, #e64028); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#f1533a, #e64028); /* 标准的语法 */
+        }
+
+            .container_head .col-xs-6:last-child {
+                text-align: right;
+                padding-top: 13px;
+            }
+        .shezhi_list {
+            width: 714px;
+            height: 347px;
+            border: 4px solid #e83f2c;
+            border-top:none;
+        }
+        .shezhi_list .nav-tabs {
+            margin-top: 9px;
+            padding-left: 19px;
+            border-color: #f04b38;
+        }
+
+            .shezhi_list .nav-tabs li {
+                width: 85px;
+                height: 25px;
+                line-height: 25px;
+                padding: 0px;
+                text-align: center;
+                background: #ef4c39;
+                margin-right: 2px;
+                border-radius: 0px;
+            }
+
+                .shezhi_list .nav-tabs li a {
+                    width: 85px;
+                    height: 25px;
+                    line-height: 25px;
+                    padding: 0px;
+                    text-align: center;
+                    color: #fff;
+                    margin-right: 0px;
+                    border-radius: 0px;
+                    font-family:"微软雅黑";
+                }
+
+                .shezhi_list .nav-tabs li.active a {
+                    color: #454545;
+                    font-weight: bold;
+                    border-color: #f04b38;
+                    border-bottom:none;
+                }
+                .shezhi_list .nav-tabs li:hover a {
+                    color: #454545;
+                    font-weight: bold;
+                    border-color: #f04b38;
+                    border-bottom: none;
+                    background:#fff;
+                }
+                .shezhi_list .nav-tabs li a:hover {
+                    color: #454545;
+                    font-weight: bold;
+                    border-color: #f04b38;
+                    border-bottom: none;
+                    background:#fff;
+                }
+        .tab-content {
+            position: absolute;
+            top: 79px;
+            height: 313px;
+            width: 713px;
+        }
+
+        .jysz {
+            padding-left: 24px;
+        }
+
+            .jysz .checkbox {
+                margin-top: 22px;
+                margin-bottom: 22px;
+            }
+
+            .jysz select {
+                width: 157px;
+                height: 21px;
+            }
+
+        .container .jysz-dx {
+            position: relative;
+            z-index: 2;
+            top: 9px;
+            background: #fff;
+            display: block;
+            width: 55px;
+            text-align: center;
+            left: 5px;
+            clear: both;
+        }
+
+        .btn-qd,.btn-qx,.btn-pass {
+            position: absolute;
+            bottom: 14px;
+            right: 124px;
+            width: 96px;
+            height: 34px;
+            font-size: 14px;
+            line-height: 34px;
+            padding: 0px;
+            background: #e94230;
+            color: #fff;
+            border: none;
+            font-family: "微软雅黑";
+        }
+
+        .btn-qx {
+            background: #c2c2c2;
+            right: 16px;
+            color: #515151;
+        }
+        .btn-pass {
+            background: #ffad35;
+            right: 230px;
+            color: #fff;
+        }
+
+            .btn-qd:hover {
+                background: #ca0600;
+                color: #fff;
+            }
+        .btn-pass:hover{
+          background: #ffad35;
+          color: #fff;
+        }
+        .btn-qx:hover {
+            background: #b5b4b4;
+        }
+
+        .container label {
+            font-weight: normal;
+            letter-spacing: 2px;
+            color:#000;
+        }
+
+        .xtsz label {
+            font-weight: bold;
+            line-height: 20px;
+        }
+        .txsz{ padding-left: 45px; position: relative;}
+        .txsz label:first-of-type{ margin:20px 0px; color: #666; display: block; }
+        .txsz-file{
+            height: 38px;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            font-size: 30px;
+            position: absolute;
+            left: 45px;
+            top: 37px;
+            width: 130px;
+        }
+        .txsz-filebtn {
+            background: none;
+            border: none;
+            background: url('images/setportrait_btn_da8845e1.png') 0 0;
+            background-repeat: no-repeat;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            width: 130px;
+        }
+        .txsz-msg{    color: #999;
+    display: inline-block;
+    margin-left: 6px;
+    text-align: left;}
+        .txsz-previewbig{width: 100px; height: 100px;}
+        .txsz-previewsmall{width: 55px; height: 55px;}
+        .txsz p{display: block; margin-top: 5px;}
+        .grzl{
+          margin:10px 0px 10px 45px;
+          letter-spacing: 1px;
+    padding: 0px;
+    font-size: 14px;
+    font-family: "微软雅黑";}
+    .grzl div:first-child{font-weight: bold;}
+    </style>
+  </head>
+  <body style="overflow:hidden;">
+    <div class="container" style="width:714px;">
+        <div class="row container_head">
+            <div class="col-xs-6"><img src="images/shezhi_logo.png" alt=""></div>
+            <div class="col-xs-6"><a href="#"><img src="images/shezhi_close.png" alt=""></a></div>
+        </div>
+        <div class="row shezhi_list">
+            <div class="col-xs-12" style="padding:0px;">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#txsz" data-toggle="tab">
+                            头像设置
+                        </a>
+                    </li>
+                    <li style="display:none;"><a href="#ghpf" data-toggle="tab">更换皮肤</a></li>
+                    <li><a href="#grzl" data-toggle="tab">个人资料</a></li>
+                </ul>
+            </div>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="txsz">
+                  <form class="txsz">
+                    <label for="">选择本地照片，上传编辑自己的头像</label>
+                    <input type="button" class="txsz-filebtn" name="openImgBtn" id="openImgBtn" value="选择图片">
+                    <input type="file" class="txsz-file" name="file" id="fileImg">
+                    <span class="txsz-msg">支持jpg、jpeg、gif、png、bmp格式的图片</span>
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <label for="" style="font-size:18px;">头像预览</label>
+                        <div class="col-xs-6 text-center">
+                          <img src="http://himg.bdimg.com/sys/portrait/item/e6ff73686e333733363935380e06" class="txsz-previewbig" id="previewImgBig">
+                          <p>大头像100*100</p>
+                        </div>
+                        <div class="col-xs-6 text-center" style="padding-top:30px;">
+                          <img src="http://himg.bdimg.com/sys/portrait/item/e6ff73686e333733363935380e06" class="txsz-previewsmall" id="previewImgSmall">
+                          <p>小头像55*55</p>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="ghpf" style="display:none;">
+
+                </div>
+                <div class="tab-pane fade" id="grzl">
+                  <div class="row">
+                    <div class="col-xs-8" style="padding-top:13px;">
+                        <div class="row grzl">
+                            <div class="col-xs-4">账户名：</div>
+                            <div class="col-xs-3">刘某某</div>
+                        </div>
+                        <div class="row grzl">
+                            <div class="col-xs-4">会员到期时间：</div>
+                            <div class="col-xs-3">2016-1-1</div>
+                        </div>
+                        <div class="row grzl">
+                            <div class="col-xs-4">会员等级：</div>
+                            <div class="col-xs-3">黄金一级</div>
+                        </div>
+                        <div class="row grzl">
+                            <div class="col-xs-4">剩余短信条数：</div>
+                            <div class="col-xs-3">300</div>
+                        </div>
+                        <div class="row grzl">
+                            <div class="col-xs-4">软件版本：</div>
+                            <div class="col-xs-3">v1.1.1</div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-default btn-pass">修改密码</button>
+            <button type="button" class="btn btn-default btn-qd">确定</button>
+            <button type="button" class="btn btn-default btn-qx">取消</button>
+        </div>
+    </div>
+</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    $(function(){
+        var t = false,x,y,a,b;
+            element = $(".container")
+        $('.container').mouseup(function(){
+            t = false;
+        }).mousedown(function(e){
+            var position = element.position();
+                pageX = event.pageX-position.left; //鼠标和DIV的相对坐标
+                pageY = event.pageY-position.top;
+                t = true;
+        }).mousemove(function(e){
+            if(t){
+                // var x = $('.container').offsetTop;
+                // var x1 = e.clientX;
+                // alert(x1);
+                console.log(a+','+b);
+                var x = e.pageX-pageX;
+                var y = e.pageY-pageY;
+                $('.container').css('left',x);
+                $('.container').css('top',y);
+            }
+        })
+    })
+    </script>
+
+</html>

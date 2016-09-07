@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color:#000;
+        }
+        td {
+            line-height: 1.5;
+        }
+        .bline {
+            border-bottom: 1px dotted #BCBCBC;
+            height: 28px;
+            background-color: #FFFFFF;
+        }
+        input[type="text"], input[type="password"] {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #707070 #CECECE #CECECE #707070;
+            padding: 2px 4px;
+            height: 18px;
+            line-height: 18px;
+            vertical-align: middle;
+        }
+        input[type="checkbox"] {
+            margin: 3px 3px 3px 4px;
+            margin-top: 3px;
+            margin-right: 3px;
+            margin-bottom: 3px;
+            margin-left: 4px;
+        }
+
+        user agent stylesheetinput[type="radio"], input[type="checkbox"] {
+            margin: 3px 0.5ex;
+            margin-top: 3px;
+            margin-right: 0.5ex;
+            margin-bottom: 3px;
+            margin-left: 0.5ex;
+            padding: initial;
+            background-color: initial;
+            border: initial;
+        }
+        select {
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+        <tbody>
+            <tr>
+                <td width="100%" height="30" style="padding-left:20px;"><a href="#"><u>文章列表</u></a> &gt;&gt; 发布文章</td>
+            </tr>
+        </tbody>
+    </table>
+    <table width="97%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1" style="margin:0 auto;">
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <table width="800" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;常规信息&nbsp;</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <form name="form1" action="article_add.php" enctype="multipart/form-data" method="post" onsubmit="return checkSubmit()">
+        <input type="hidden" name="channelid" value="1">
+        <input type="hidden" name="dopost" value="save">
+        <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff;">
+            <tbody>
+                <tr>
+                    <td height="24" colspan="5" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;文章标题：</td>
+                                    <td width="408"><input name="title" type="text" id="title" value="" style="width:388px"></td>
+                                    <td width="90"><input type="checkbox" name="name" value=" " />粗体<input type="checkbox" name="name" value=" " />斜体</td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="24" colspan="5" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;文章主栏目：</td>
+                                    <td>
+                                        <span id="typeidct">
+                                            <select name="typeid" id="typeid" style="width:240px">
+                                                <option value="0">请选择栏目...</option>
+                                                <option value="2" class="option1">公司简介(封面频道)</option>
+                                                <option value="8" class="option1">─公司介绍</option>
+                                                <option value="9" class="option1">─活动纪要</option>
+                                                <option value="10" class="option1">─公司结构</option>
+                                                <option value="3" class="option3">业务领域</option>
+                                                <option value="11" class="option3">─新风换气</option>
+                                                <option value="12" class="option3">─净化加湿</option>
+                                                <option value="13" class="option3">─空气源热泵</option>
+                                                <option value="14" class="option3">─投资建设</option>
+                                                <option value="4" class="option3">新闻动态</option>
+                                                <option value="5" class="option3">工程案例</option>
+                                                <option value="15" class="option3">─热泵供热制冷</option>
+                                                <option value="16" class="option3">─新风换气</option>
+                                                <option value="17" class="option3">─换热改造</option>
+                                                <option value="18" class="option3">─风电空配一体化</option>
+                                                <option value="19" class="option3">幻灯广告</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="name" value=" " />推荐<input type="checkbox" name="name" value=" " />置顶<input type="checkbox" name="name" value=" " />验证<input type="checkbox" name="name" value=" " />允许评论
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="24" colspan="5" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;标签索引：</td>
+                                    <td>
+                                        <input name="title" type="text" id="title" value="" style="width:350px">
+                                    </td>
+                                    <td>
+                                        支持空格、逗号分割
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="24" colspan="5" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;文章来源：</td>
+                                    <td width="240">
+                                        <input name="source" type="text" id="source" style="width:160px" value="" size="16">
+                                        <input name="selsource" type="button" id="selsource" value="选择">
+                                    </td>
+                                    <td width="90">作　者：</td>
+                                    <td>
+                                        <input name="writer" type="text" id="writer" style="width:120px" value="">
+                                        <input name="selwriter" type="button" id="selwriter" value="选择">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="24" colspan="5" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;关键字：</td>
+                                    <td width="448"><input type="text" name="keywords" id="keywords" style="width:80%" value=""></td>
+                                    <td>
+                                        <input name="autokey" type="checkbox" onclick="ShowHide('keywords');" ;="" class="np" id="autokey" value="1" checked="1">
+                                        自动获取，手动填写用","分开<br>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="24" colspan="5" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;内容摘要：</td>
+                                    <td width="449"><textarea name="description" rows="5" id="description" style="width:80%;height:50px"></textarea></td>
+                                    <td width="261">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="hidden" name="dede_addonfields" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td height="28" colspan="2" bgcolor="#F9FCEF" class="bline2">
+                        <div style="float:left;line-height:28px;">&nbsp;<strong>文章内容：</strong></div>
+                        <div style="float:right;;padding-right:8px">
+                            
+                        </div>
+                        <div style="float:right;padding-right:8px">
+                            
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" height="24" colspan="2" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;附加选项：</td>
+                                    <td>
+                                        <input name="remote" type="checkbox" class="np" id="remote" value="1" checked="1">
+                                        下载远程图片和资源
+                                        <input name="dellink" type="checkbox" class="np" id="dellink" value="1">
+                                        删除非站内链接 <a href="javascript:OpenMyWin('article_allowurl_edit.php');">[设置]</a>
+                                        <input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" checked="1">
+                                        提取第一个图片为缩略图
+                                        <input type="checkbox" name="needwatermark" value="1" class="np">
+                                        图片是否加水印
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%" id="arcBody">
+                        <textarea name="body" rows="8" cols="60" style="visibility: hidden; display: none;"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- //高级参数 -->
+        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1" style="margin:10px auto 0 auto;">
+            <tbody>
+                <tr>
+                    <td>
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="84" height="24" align="center" background="images/itemnote1.gif"><a href=''>高级参数↑</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #cfcfcf;background:#ffffff;">
+            <tbody>
+                <tr>
+                    <td height="24" colspan="4" class="bline">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="90">&nbsp;发布时间：</td>
+                                    <td width="241">
+                                        <input name="pubdate" value="2016-01-15 18:05:32" type="text" id="pubdate" style="width:120px">
+                                        <script language="javascript" type="text/javascript">
+                                            var showX = getElementLeft($Obj("pubdate")) - 130;
+                                            var showY = (window.navigator.userAgent.indexOf("MSIE") >= 1) ? getElementTop($Obj("pubdate")) + 465 : getElementTop($Obj("pubdate")) + 435;
+                                            if ((window.navigator.userAgent.indexOf("MSIE 7.0") >= 1)) {
+                                                showX = getElementLeft($Obj("pubdate")) + 105;
+                                                showY = getElementTop($Obj("pubdate")) + 1200;
+                                            }
+                                            if (window.navigator.userAgent.indexOf("MSIE 6.0") >= 1) {
+                                                Calendar.setup({
+                                                    inputField: "pubdate",
+                                                    ifFormat: "%Y-%m-%d %H:%M:%S",
+                                                    showsTime: true,
+                                                    timeFormat: "24"
+                                                });
+                                            } else {
+                                                Calendar.setup({
+                                                    inputField: "pubdate",
+                                                    ifFormat: "%Y-%m-%d %H:%M:%S",
+                                                    showsTime: true,
+                                                    position: [showX, showY],
+                                                    timeFormat: "24"
+                                                });
+                                            }
+                                        </script>
+                                    </td>
+                                    <td width="90"></td>
+                                    <td width="379"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="24" colspan="4">
+                        <table width="800" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="109">&nbsp;自定义文件名：</td>
+                                    <td width="351"><input type="text" name="filename" id="filename">（不包括后缀名如.html等）</td>
+                                    <td width="340">
+                                        <input type="hidden" name="templet" value="">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#F9FCEF" style="border:1px solid #cfcfcf;border-top:none;">
+            <tbody>
+                <tr height="35">
+                    <td width="17%">&nbsp;</td>
+                    <td width="83%">
+                        <input name="imageField" type="image" src="images/button_save.gif" width="60" height="22" class="np" border="0" style="cursor:pointer;">
+                        <img src="images/button_reset.gif" width="60" height="22" border="0" onclick="location.reload();" style="cursor:pointer; ">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

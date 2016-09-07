@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下雨</title>
+    <script src="http://www.lbboke.com/js/jquery.js"></script>
+</head>
+<body>
+    <div class="main" style="position:relative">
+        <div style="width:480px;height:800px;background:url(/img/1.jpg) repeat scroll 0 0;background-color:#CCCCCC;">
+            <canvas id="myCanvas" width="480" height="800" style="position:absolute;left:0;top:0;z-index:5;"></canvas>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+        var W = 480,
+            H = 800,
+            ctx, angle = 0,
+            len = 20,
+            count = 250;
+        var canvas = $("#myCanvas")[0];
+            ctx = canvas.getContext('2d');
+            console.log(W, H);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+        var run = setInterval(draw, 200);
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                xiayus();
+            }
+            //画线
+            function xiayu(x, y, r) {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                //console.log(y, len);
+                ctx.lineTo(x + angle, y + len);
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+            function xiayus() {
+                for (var i = 1; i <= count; i++) {
+                    xiayu(Math.random() * W, Math.random() * H, angle);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="js/jquery.min.js"></script>
+
+    <style type="text/css">
+        img {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo" style="overflow: hidden; width: 500px;">
+
+        <div id="demo1">金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿金肯空单饭卡东九分裤安矿</div>
+    </div>
+
+    <script type="text/javascript">
+        var speed = 30;
+        var demo = $("#demo");
+        var demo1 = $("#demo1");
+        var demo2 = $("#demo2");
+        demo2.html(demo1.html());
+        function Marquee() {
+            if (demo.scrollLeft() >= demo1.width())
+                demo.scrollLeft(0);
+            else {
+                demo.scrollLeft(demo.scrollLeft() + 1);
+            }
+        }
+        var MyMar = setInterval(Marquee, speed)
+        demo.mouseover(function () {
+            clearInterval(MyMar);
+        })
+        demo.mouseout(function () {
+            MyMar = setInterval(Marquee, speed);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/demo.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lanrenzhijia.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .jianjie div {
+            padding: 0px;
+            line-height: 25px;
+        }
+
+        .jianjie .col-xs-3 {
+            letter-spacing: 4px;
+        }
+        .tu{
+            width:100%;
+            height:200px;
+        }
+        .xian{
+            position:absolute;
+            width:100%;
+            height:50px;
+            background:#fff;
+            top:100px;
+            z-index:10;
+            //display:none;
+        }
+        #myCanvas {
+            position: absolute;
+            left: -100px;
+            top: -50px;
+            animation: myfirst 6s linear 0s;
+        }
+        #myCanvas1 {
+            position: absolute;
+            left: -50px;
+            top: 100px;
+            animation: myfirst1 6s linear 2s;
+        }
+        @keyframes myfirst {
+            from {left: -100px;top: -50px;}
+            to {left: 50px;top: 100px;}
+        }
+        @keyframes myfirst1 {
+            from {left: -50px;top: 100px;}
+            to { left: 50px; top: 0px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="tu">
+        <span class="dian">点击</span>
+        <br />
+        <i class="xian"></i>
+        <canvas id="myCanvas" width="200" height="100">
+            Your browser does not support the canvas element.
+        </canvas>
+        <script type="text/javascript">
+            var c = document.getElementById("myCanvas");
+            var cxt = c.getContext("2d");
+            cxt.moveTo(0, 0);
+            cxt.lineTo(100, 100);
+            cxt.stroke();
+        </script>
+        <canvas id="myCanvas1" width="200" height="100">
+            Your browser does not support the canvas element.
+        </canvas>
+        <script type="text/javascript">
+            var c = document.getElementById("myCanvas1");
+            var cxt = c.getContext("2d");
+            cxt.moveTo(0, 100);
+            cxt.lineTo(100, 0);
+            cxt.stroke();
+        </script>
+    </div>
+    <!--<h1>你好，世界！</h1>
+    <table class="table table-bordered">
+      <tr>
+        <td>1</td><td>1</td>
+      </tr>
+      <tr>
+        <td>2</td><td>2</td>
+      </tr>
+      <tr>
+        <td>3</td><td>3</td>
+      </tr>
+    </table>-->
+    <!--<div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8 ">
+                <div class="row jianjie">
+                    <div class="col-xs-3">公司地址：</div>
+                    <div class="col-xs-9">北京市海淀区黄平路19号龙旗广场D座1103室</div>
+                    <div class="col-xs-3 ">公司总机：</div>
+                    <div class="col-xs-9">4008-3132-58</div>
+                    <div class="col-xs-3">乘车路线：</div>
+                    <div class="col-xs-9">地铁8号线育新A/B口出，向北1000米</div>
+                    <div class="col-xs-3">客服部：</div>
+                    <div class="col-xs-9"><a href="#"><img src="images/button_51.gif" alt=""><strong>机智体验客服（注明：付费/未付费）</strong></a></div>
+                    <div class="col-xs-3 ">研发部：</div>
+                    <div class="col-xs-9"><a href="#"><strong><img src="images/button_51.gif" alt="">机智体验客服</strong></a><strong>（注明：付费/未付费）</strong></a></div>
+                    <div class="col-xs-3 ">招商部：</div>
+                    <div class="col-xs-9">QQ:545012530<a>立即交流（注明：公司/个人）</a></div>
+                </div>
+            </div>
+            <div class="col-xs-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8" id="content">
+                <a id="example1" href="images/1.png"><img src="images/1.png" class="img-responsive" alt=""></a>
+            </div>
+            <div class="col-xs-2"></div>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-9 col-lg-11" style="border:1px solid red;">111111111111111111111</div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-1" style="border:1px solid red;">2222222222222222222</div>
+        </div>
+    </div>
+    <ul class="list-inline">
+        <li>11111</li>
+        <li>22222</li>
+        <li>33333</li>
+    </ul>
+    <dl>
+        <dt>wouiuv</dt>
+        <dd>niuivu</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>wouiuv</dt>
+        <dd>wouiuv111</dd>
+        <dt>wouiuv</dt>
+        <dd>wouiuv111</dd>
+    </dl>
+    To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+    To edit settings, press <kbd>ctrl + ,</kbd>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>11111</th>
+            <th>11111</th>
+        </tr>
+        <tr>
+            <td>22222</td>
+            <td>22222</td>
+        </tr>
+        <tr>
+            <td>22222</td>
+            <td>22222</td>
+        </tr>
+        <tr>
+            <td>22222</td>
+            <td>22222</td>
+        </tr>
+        <tr>
+            <td>22222</td>
+            <td>22222</td>
+        </tr>
+    </table>
+    <table class="table">
+        <caption>基本的表格布局</caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>城市</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-hover">
+        <caption>悬停表格布局</caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>城市</th>
+                <th>密码</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+            </tr>
+            <tr>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-condensed">
+        <caption>精简表格布局</caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>城市</th>
+                <th>密码</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+            </tr>
+            <tr>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table">
+        <caption>上下文表格布局</caption>
+        <thead>
+            <tr>
+                <th>产品</th>
+                <th>付款日期</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>产品1</td>
+                <td>23/11/2013</td>
+                <td>待发货</td>
+            </tr>
+            <tr class="success">
+                <td>产品2</td>
+                <td>10/11/2013</td>
+                <td>发货中</td>
+            </tr>
+            <tr class="warning">
+                <td>产品3</td>
+                <td>20/10/2013</td>
+                <td>待确认</td>
+            </tr>
+            <tr class="danger">
+                <td>产品4</td>
+                <td>20/10/2013</td>
+                <td>已退货</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="table-responsive">
+        <table class="table">
+            <caption>响应式表格布局</caption>
+            <thead>
+                <tr>
+                    <th>产品</th>
+                    <th>付款日期</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>产品1</td>
+                    <td>23/11/2013</td>
+                    <td>待发货</td>
+                </tr>
+                <tr>
+                    <td>产品2</td>
+                    <td>10/11/2013</td>
+                    <td>发货中</td>
+                </tr>
+                <tr>
+                    <td>产品3</td>
+                    <td>20/10/2013</td>
+                    <td>待确认</td>
+                </tr>
+                <tr>
+                    <td>产品4</td>
+                    <td>20/10/2013</td>
+                    <td>已退货</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">名称</label>
+            <input type="text" class="form-control" id="name"
+                   placeholder="请输入名称">
+        </div>
+        <div class="form-group">
+            <label for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+            <p class="help-block">这里是块级帮助文本的实例。</p>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> 请打勾
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">提交</button>
+    </form>
+    <br />
+    <form class="form-inline" role="form">
+        <p>内联表单</p>
+        <div class="form-group">
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name"
+                   placeholder="请输入名称">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> 请打勾
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">提交</button>
+    </form>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne">
+                        点击我进行展开，再次点击我进行折叠。第 1 部分
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                    vice lomo.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo">
+                        点击我进行展开，再次点击我进行折叠。第 2 部分
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                    vice lomo.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseThree">
+                        点击我进行展开，再次点击我进行折叠。第 3 部分
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                    vice lomo.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.imgbox.pack.js"></script>
+    <script>
+        $(function () {
+            $("#example1").imgbox();
+        });
+    </script>
+    <script>
+        $(function () {
+            $('.dian').on('click', function () {
+                $('.xian').css('display', 'none');
+            })
+        })
+    </script>
+</body>
+
+</html>

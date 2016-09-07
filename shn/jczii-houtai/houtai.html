@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机智后台系统</title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            font-size:12px;
+        }
+        ul {
+            list-style: none;
+        }
+        a{
+            text-decoration:none;
+        }
+        body {
+            height: 100%;
+            font-size: 12px;
+            font-family: "微软雅黑";
+            overflow: hidden;
+            z-index: 1;
+        }
+        .head {
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            z-index: 8;
+            position: relative;
+            border-bottom: 1px solid #ee1c23;
+            background: #ee1c23;
+        }
+        .top {
+            height: 45px;
+            width: 100%;
+            overflow: hidden;
+            clear: both;
+        }
+            .top .top_logo {
+                width: 170px;
+                height: 40px;
+                float: left;
+                padding-left:20px;
+                padding-top:5px;
+            }
+            .top .top_link {
+                float: right;
+                padding: 10px 50px 0px 0px;
+            }
+                .top .top_link ul {
+                    float: left;
+                    padding: 8px 0px 0px 0px;
+                    line-height: 14px;
+                    overflow: hidden;
+                }
+                    .top .top_link ul li {
+                        float: left;
+                        color: #CBDAB3;
+                        border-right: 1px solid #fff;
+                        margin-right: -1px;
+                    }
+                        .top .top_link ul li.welcome {
+                            border-right: none;
+                            color: #fff;
+                            padding-right: 6px;
+                        }
+                        .top .top_link ul li a {
+                            color: #fff;
+                            padding-left: 11px;
+                            padding-right: 11px;
+                            text-decoration: none;
+                        }
+        .left {
+            position: absolute;
+            top: 50px;
+            width: 212px;
+            left: 0px;
+            bottom: 0px;
+            z-index: 7;
+            background: #f7f7f7;
+            padding-top:10px;
+        }
+        dl.bitem,dl.bitem2 {
+            clear: both;
+            width: 140px;
+            margin: 0px 0px 5px 35px;
+        }
+            dl.bitem dt::before {
+                content: "";
+                background: url(images/bitem_bg1.png) no-repeat;
+                position: absolute;
+                width: 4px;
+                height: 7px;
+                top: 10px;
+                left: 16px;
+                transition: all;
+                transition-duration: 0.4s;
+            }
+            dl.bitem dt.active::before {
+                content: "";
+                background: url(images/bitem_bg1.png) no-repeat;
+                position: absolute;
+                width: 4px;
+                height: 7px;
+                top: 10px;
+                left: 16px;
+                transition: all;
+                transition-duration: 0.4s;
+                transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+            }
+            dl.bitem dt, dl.bitem2 dt {
+                height: 25px;
+                line-height: 25px;
+                padding-left: 35px;
+                cursor: pointer;
+                background: url(images/bitem_bg.png) repeat-x;
+                border: 1px solid #cfcfcf;
+                position:relative;
+            }
+            dl.bitem dd, dl.bitem2 dd {
+                padding: 3px 3px 10px 15px;
+                background-color: #fff;
+                border: 1px solid #cfcfcf;
+                border-top: 0;
+                border-bottom-left-radius:4px;
+                border-bottom-right-radius:4px;
+            }
+        .sitemu li {
+            padding: 0px 0px 0px 18px;
+            line-height: 25px;
+            background: url(images/arr4.gif) no-repeat 5px 9px;
+        }
+        .sitemu li a{
+            color:#000;
+        }
+        .sitemu li a:hover{
+            color:red;
+        }
+        .right {
+            position: absolute;
+            left:225px;
+            right:0;
+            top: 66px;
+            bottom: 0px;
+            z-index: 7;
+        }
+            .right iframe {
+                height: 100%;
+                width: 99.99%;
+                z-index: 20;
+            }
+    </style>
+    <script>
+        $(function(){
+            var iTrue = true;
+            $('#ct1 dl dt').on("click",function(){
+                    if(!$(this).next('dd').is(':animated')){
+                        if(iTrue){
+                            $(this).addClass('active');
+                            $(this).next('dd').slideDown(250);
+                            iTrue = false;
+                        }else{
+                            $(this).removeClass('active');
+                            $(this).next('dd').slideUp(400);
+                            iTrue = true;
+                        }
+                    }
+                    return false;
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="head">
+        <div class="top">
+            <div class="top_logo"> <img src="images/jz_logo1.png"  height="40" alt="DedeCms Logo" title="Welcome use DedeCms" id="topdedelogo"> </div>
+            <div class="top_link">
+                <ul>
+                    <li class="welcome">您好：zyc ，欢迎使用机智后台系统！</li>
+                    <li><a href="" target="menu">主菜单</a></li>
+                    <li><a href="#">预览网站</a></li>
+                    <li><a href="#">刷新后台</a></li>
+                    <li><a href="#">系统设置</a></li>
+                    <li><a href="#" target="_blank">信息管理</a></li>
+                    <li><a href="#" target="_blank">更新缓存</a></li>
+                    <li><a href="#" target="_top">注销</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <div id="ct1">
+                <!-- Item 2 Strat -->
+                <dl class="bitem" id="sunitems1_1">
+                    <dt class="active"><b>系统管理</b></dt>
+                    <dd style="display: block;" class="sitem" id="items1_1">
+                        <ul class="sitemu">
+                            <li>
+                                <a href="#" target="main">系统设置</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">管理账户</a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="bitem" id="sunitems1_2">
+                    <dt class="active"><b>信息管理</b></dt>
+                    <dd style="display: block;" class="sitem" id="items1_1">
+                        <ul class="sitemu">
+                            <li>
+                                <a href="#" target="main">分类管理</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">添加分类</a>
+                            </li>
+                            <li>
+                                <a href="index_body.html" target="main">信息管理</a>
+                            </li>
+                            <li>
+                                <a href="Artcle.html" target="main">添加信息</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">单页管理</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">添加单页</a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="bitem" id="sunitems1_2">
+                    <dt class="active"><b>插件管理</b></dt>
+                    <dd style="display: block;" class="sitem" id="items1_1">
+                        <ul class="sitemu">
+                            <li>
+                                <a href="#" target="main">链接管理</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">广告管理</a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="bitem" id="sunitems1_2">
+                    <dt class="active"><b>生成管理</b></dt>
+                    <dd style="display: block;" class="sitem" id="items1_1">
+                        <ul class="sitemu">
+                            <li>
+                                <a href="#" target="main">生成首页</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">生成栏目</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">生成信息</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">生成单页</a>
+                            </li>
+                            <li>
+                                <a href="#" target="main">生成地图</a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="right">
+            <iframe id="main" name="main" frameborder="0" src="index_body.html"></iframe>
+        </div>
+    </div>
+</body>
+</html>

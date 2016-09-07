@@ -1,0 +1,896 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>股票网页正式版</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <style>
+        html{height: 100%;}
+        nav{margin:0; position: fixed; top: 0; left: 0; background: #fff;}
+        nav.navbar{border:none; background: #fff; box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15); margin-bottom: 0; position: fixed;z-index: 12;width: 100%;}
+        nav .navbar-header{color: #4d4d4d;width:210px; background-color: #303946;text-transform: uppercase;font-weight: bold; padding: 1px 15px;font-size: 21px;float:left;}
+        nav .navbar-brand{ padding:0px;}
+        .head-nav{
+            margin:0;
+        }
+        .head-nav .navbar-header a {
+            float:none;
+            line-height:48px;
+            color:#fff;
+            font-weight:normal;
+            font-family:"微软雅黑";
+        }
+        .head-nav .navbar-header a:hover, .head-nav .navbar-header a:focus, .head-nav .navbar-header a:active{
+            color:#fff;
+        }
+        .head-nav .navbar-header button.hidden-xs {
+            display: inline !important;
+        }
+        .right-nav {
+            display: block;
+            float: left;
+            padding-left: 10px;
+            width:auto;
+            height:50px;
+        }
+        .right-nav button{float: left; width: 44px; height: 34px; display:block;}
+        .right-nav ul{position:fixed;right:20px;height:50px;top:0px;overflow:hidden;}
+        .right-nav ul li{list-style:none;float:left;line-height:48px;margin:0 8px;}
+        .con-left {
+            width: 210px;
+            height:100%;
+            position:absolute;
+            left: 0px;
+            top: 0px;
+            background-color: #303946;
+            z-index: 10;
+            float:left;
+        }
+        @font-face {font-family: 'iconfont';
+            src: url('fonts/iconfont.eot'); /* IE9*/
+            src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+            url('fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        @font-face{ 
+            font-family: 'MyWebFont';
+            src: url('fonts/20db-webfont.eot');
+            src: url('fonts/20db-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('fonts/20db-webfont.woff') format('woff'),
+                 url('fonts/20db-webfont.ttf') format('truetype'),
+                 url('fonts/20db-webfont.svg#webfont') format('svg');
+        }
+        .abc { font-family: 'MyWebFont', Arial, sans-serif; font-size: 25px; }
+        @font-face{ 
+            font-family: 'webfont1';
+            src: url('fonts/webfont1.eot');
+            src: url('fonts/webfont1.eot?#iefix') format('embedded-opentype'),
+                 url('fonts/webfont1.woff') format('woff'),
+                 url('fonts/webfont1.ttf') format('truetype'),
+                 url('fonts/webfont1.svg#webfont') format('svg');
+        }
+        .font{ font-family: 'webfont1', Arial, sans-serif; font-size: 25px; font-weight: bold;}
+        .con-left .panel{border:none;border-radius:0px; background: none; color: #fff; margin-bottom: 0;}
+        .con-left .panel-title{background: #455264;border-top: 1px solid #2e3743; border-bottom: 1px solid #2e3743; color: #fff;padding: 8px 15px 8px 17px;font-size: 13px;}
+        .con-left .panel-body img{border-radius: 3px;float: left;margin-right: 15px;width: 64px;}
+        .user-name{margin: 5px 0; display:block;}
+        .drop-user{ border-radius: 4px;}
+        .drop-user button{ width:90px;margin:10px 0; height:20px;float: left;padding:0px;background: #e8e8e8;color: #333; font-size: 13px;}
+        .drop-user .dropdown-menu{left:40px;top: 38px; min-width: 120px;}
+        .drop-user .dropdown-menu:after,.drop-user .dropdown-menu:before {bottom: 100%;left: 65%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;}
+        .drop-user .dropdown-menu:after {border-color: rgba(255, 255, 255, 0);border-bottom-color: #fff;border-width: 10px;margin-left: -10px;}
+        .drop-user .dropdown-menu:before {border-bottom-color: #efefef;border-width: 11px;margin-left: -12px;}
+        .nav-left{padding:0px;}
+        .nav-left .nav li > a i {
+            float: right;
+            margin-right: 10px;
+            transition: all;
+            transition-duration: 0.4s;
+        }
+        .nav-left .nav li > a.collapsed i {
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+        }
+        .nav-left li{width: 100%;}
+        .nav-left span{color: #fff;}
+        .nav-left ul li a{color:#8b929a; position: relative;transition:background 0.4s;}
+        .nav-left ul li a:hover, .nav-left ul li a:focus {
+            background-color: #262d37;
+            color: #ffffff;
+        }
+        .nav-left2{padding:0px;}
+        .nav-left2 li a{list-style: none; display:block;padding: 10px 20px 4px 60px;text-decoration: none;}
+        .nav-left ul > li div ul.nav-left2 > li a:before {content: "";border: 1px solid #8b929a;border-radius: 50%;width: 7px;height: 7px;float: left;margin-top: 6px;left: 26px;position: absolute;z-index: 12;background-color: #1c2128;
+        transition: border-color;
+        transition-duration: 0.4s;}
+        .nav-left ul > li ul.nav-left2 > li a{background:#262d37;}
+        .nav-left ul > li ul.nav-left2 > li a:after {content: "";height: 38px;width: 1px;background-color: #8b929a;position: absolute;top: 0;left: 29px;z-index: 10;}
+        .nav-left ul > li ul.nav-left2 > li a:hover:before {border-color: #ffffff;}
+
+        .nav-left ul > li ul.nav-left2 > li:first-child a {
+            padding-top: 10px;
+        }
+        .nav-left ul > li ul.nav-left2 > li:first-child a.expand:after {
+            height: 20px;
+        }
+        .nav-left ul > li ul.nav-left2 > li:last-child a {padding-bottom: 10px;}
+        .nav-left ul > li ul.nav-left2 > li:last-child a:after {height: 18px;}
+        .content {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 50px;
+            left: 0;
+        }
+        .con-left.collapse.in {
+            display: block !important;  
+            z-index: 10;
+        }
+        .anv{}
+        .con-left.navbar-collapse{padding:0px;}
+        .con-right {
+            background: #Fff;
+            height: auto;
+            width: auto;
+            margin-left: 210px;
+            padding-bottom:100px;
+            padding-left:15px;
+        }
+
+
+        /*issue-item*/
+        .issue-item {
+            margin-bottom: 25px;
+            margin-left: 40px;
+            position: relative;
+        }
+        .issue-item .issue-inner {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 10px;
+            position: relative;
+        }
+        .issue-item .issue-inner:before {
+            border-right: 10px solid #ddd;
+            border-style: solid;
+            border-width: 10px;
+            color: rgba(0,0,0,0);
+            content: "";
+            display: block;
+            height: 0;
+            position: absolute;
+            left: -20px;
+            top: 6px;
+            width: 0;
+        }
+        .issue-item .issue-inner:after {
+            border-right: 10px solid #fff;
+            border-style: solid;
+            border-width: 10px;
+            color: rgba(0,0,0,0);
+            content: "";
+            display: block;
+            height: 0;
+            position: absolute;
+            left: -18px;
+            top: 6px;
+            width: 0;
+        }
+        .issue-item:before {
+            background: #fff;
+            border-radius: 2px;
+            bottom: -30px;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            content: "";
+            height: 100%;
+            left: -30px;
+            position: absolute;
+            width: 3px;
+        }
+        .issue-item:after {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            content: "";
+            height: 15px;
+            left: -36px;
+            position: absolute;
+            top: 10px;
+            width: 15px;
+        }
+        .clearfix:before, .clearfix:after {
+            content: " ";
+            display: table;
+        }
+        .issue-item .issue-head {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+        }
+        .issue-item .issue-head .avatar {
+            margin-right: 20px;
+        }
+        .issue-item .issue-head .issue-detail {
+            overflow: hidden;
+        }
+        .issue-item .issue-head .issue-detail h5 {
+            font-size: 16px;
+            margin: 0;
+            margin-bottom:10px;
+        }
+        .issue-item .issue-head .post-meta {
+            float: left;
+            padding: 0 15px 0 0;
+        }
+        .issue-item .issue-head .post-meta >div {
+            color: #333;
+            font-weight: bold;
+            text-align: right;
+        }
+        .post-meta > div {
+            color: #777;
+            font-size: 12px;
+            line-height: 22px;
+        }
+        .issue-item .issue-head .post-meta >div {
+            color: #333;
+            font-weight: bold;
+            text-align: right;
+        }
+        .post-meta > div {
+            color: #777;
+            font-size: 12px;
+            line-height: 22px;
+        }
+        #main-page-avatar {
+           min-height: 60px;
+           max-height: 60px;
+       }
+
+       #time-stamp{
+        margin-left:80px;
+    }
+    .progress-bar{ animation:myfirst 5s;}
+    @keyframes myfirst{
+        from{width:;}
+        to{width: 100%;}
+    }
+    @media all and  (max-width: 767px) {
+        nav.navbar{
+            z-index:9;
+        }
+        .con-left{
+            position:fixed;
+            top:50px;
+        }
+        .con-right{
+            margin-left:0;
+        }
+        .con-left.collapse {
+            display: none !important;
+        }
+        nav .navbar-header {
+            width: 100%;
+        }
+        .content {
+            top: 100px;
+        }
+        .right-nav{
+            width:100%;
+        }
+        .right-nav ul {
+            position: fixed;
+            left: 20px;
+            height: 50px;
+            top: 50px;
+        }
+        .right-nav ul li {
+            float:right;
+        }
+    }
+</style>
+<script>
+    $(function(){
+        var a = "bt1";
+        console.log(a.length);
+    })
+</script>
+</head>
+<body style="width: 100%; height: 100%; background: #303946;">
+    <div class="container-fluid" style="height:100%;">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="row head-nav">
+                <div class="col-xs-12 navbar-header text-center">
+                    <div class="col-xs-7 col-xs-offset-1 col-sm-12 col-sm-offset-0" style="padding:0;">
+                        <a class="navbar-brand " href="#">
+                            机智股票自动交易
+                        </a>
+                    </div>
+                    <button type="button" class="navbar-toggle visible-xs" data-toggle="collapse" data-target="#demo" style=" margin-top: 7px; margin-bottom: 7px;">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="col-xs-12 right-nav">
+                    <ul class="list-inline">
+                        <li>交易中：11-20-05</li>
+                        <li><img src="images/head_pifu.png" alt="" /></li>
+                        <li><img src="images/head_close.png" alt="" /></li>
+                        <li><img src="images/head_right_tu.png" alt="" /></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--1-->
+        <div id="demo" class="con-left navbar-collapse collapse" aria-expanded="false">
+            <!--<div class="hidden-xs" style="height:50px;"></div>-->
+            <div class="panel">
+                <h3 class="panel-title">
+                    我的账户
+                </h3>
+                <div class="panel-body">
+                    <img src="images/128.jpg" alt="">
+                    <div class="dropdown drop-user">
+                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                            券商账户
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">Java</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">数据挖掘</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    数据通信/网络
+                                </a>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">分离的链接</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="user-name">SuggeElson</span>
+                    <span style="margin-top:6px; display:block;">SuggeElson</span>
+                </div>
+            </div>
+            <div class="panel">
+                <h3 class="panel-title">
+                    机智导航
+                </h3>
+                <div class="panel-body nav-left">
+                    <ul class="nav" id="accordion">
+                        <li class="panel">
+                            <a data-toggle="collapse" data-parent="#accordion" class="collapsed" href="#collapseOne">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                <span class="">系统委托</span>
+                                <i class="glyphicon glyphicon-menu-down"></i>
+                            </a>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <ul class="nav-left2">
+                                    <li><a href="">买入</a></li>
+                                    <li><a href="">卖出</a></li>
+                                    <li><a href="">撤单</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="panel">
+                            <a data-toggle="collapse" data-parent="#accordion" class="collapsed" href="#collapseTwo">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                <span class="">基本功能</span>
+                                <i class="glyphicon glyphicon-menu-down"></i>
+                            </a>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <ul class="nav-left2">
+                                    <li><a href="">买入任务</a></li>
+                                    <li><a href="">卖出任务</a></li>
+                                    <li><a href="">闪电交易</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="panel">
+                            <a data-toggle="collapse" data-parent="#accordion" class="collapsed" href="#collapseThree">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                <span class="">高级功能</span>
+                                <i class="glyphicon glyphicon-menu-down"></i>
+                            </a>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <ul class="nav-left2">
+                                    <li><a href="">预警交易</a></li>
+                                    <li><a href="">区间交易</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="panel">
+                            <a data-toggle="collapse" data-parent="#accordion" class="collapsed" href="#collapseFour">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                <span class="">机构功能</span>
+                                <i class="glyphicon glyphicon-menu-down"></i>
+                            </a>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <ul class="nav-left2">
+                                    <li><a href="">顺势交易</a></li>
+                                    <li><a href="">动态止盈</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="panel">
+                            <a data-toggle="collapse" data-parent="#accordion" class="collapsed" href="#collapseFive">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                <span class="">至尊功能</span>
+                                <i class="glyphicon glyphicon-menu-down"></i>
+                            </a>
+                            <div id="collapseFive" class="panel-collapse collapse">
+                                <ul class="nav-left2">
+                                    <li><a href="">涨停模型</a></li>
+                                    <li><a href="">天天盈</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel">
+                <h3 class="panel-title">
+                    账户资金
+                </h3>
+                <div class="panel-body nav-left" style="margin-bottom:50px;">
+                    <ul class="nav">
+                        <li><a href="#">可用资金</a></li>
+                        <li><a href="#">参考市价</a></li>
+                        <li><a href="#">资产总值</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!--<div class="hidden-xs" style="width:210px; height:100%;float:left;"></div>-->
+            <div class="con-right">
+            <span class="iconfont">&#xe600;</span>
+            <span class="iconfont">&#xe601;</span>
+            <span class="iconfont">&#xe602;</span>
+            <span class="iconfont">&#xe603;</span>
+            <span class="iconfont">&#xe604;</span>
+            <span class="iconfont">&#xe605;</span>
+            <span class="iconfont">&#xe606;</span>
+            <span class="iconfont">&#xe607;</span>
+            <span class="iconfont">&#xe608;</span>
+                <ul class="list-inline">
+                    <li class="font">11111</li>
+                    <li class="font">健驰是sb</li>
+                    <li class="font">11111</li>
+                    <li class="font">11111</li>
+                    <li>22222</li>
+                    <li>33333</li>
+                </ul>
+                <dl>
+                    <dt>wouiuv</dt>
+                    <dd>niuivu</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt>wouiuv</dt>
+                    <dd>wouiuv111</dd>
+                    <dt>wouiuv</dt>
+                    <dd>wouiuv111</dd>
+                </dl>
+                To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+                To edit settings, press <kbd>ctrl + ,</kbd>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>11111</th>
+                        <th>11111</th>
+                    </tr>
+                    <tr>
+                        <td>22222</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td>22222</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td>22222</td>
+                        <td>22222</td>
+                    </tr>
+                    <tr>
+                        <td>22222</td>
+                        <td>22222</td>
+                    </tr>
+                </table>
+                <table class="table">
+                    <caption class="font">基本的表格布局</caption>
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>城市</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tanmay</td>
+                            <td>Bangalore</td>
+                        </tr>
+                        <tr>
+                            <td>Sachin</td>
+                            <td>Mumbai</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover">
+                    <caption>悬停表格布局</caption>
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>城市</th>
+                            <th>密码</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tanmay</td>
+                            <td>Bangalore</td>
+                            <td>560001</td>
+                        </tr>
+                        <tr>
+                            <td>Sachin</td>
+                            <td>Mumbai</td>
+                            <td>400003</td>
+                        </tr>
+                        <tr>
+                            <td>Uma</td>
+                            <td>Pune</td>
+                            <td>411027</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-condensed">
+                    <caption>精简表格布局</caption>
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>城市</th>
+                            <th>密码</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tanmay</td>
+                            <td>Bangalore</td>
+                            <td>560001</td>
+                        </tr>
+                        <tr>
+                            <td>Sachin</td>
+                            <td>Mumbai</td>
+                            <td>400003</td>
+                        </tr>
+                        <tr>
+                            <td>Uma</td>
+                            <td>Pune</td>
+                            <td>411027</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <caption>上下文表格布局</caption>
+                    <thead>
+                        <tr>
+                            <th>产品</th>
+                            <th>付款日期</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>产品1</td>
+                            <td>23/11/2013</td>
+                            <td>待发货</td>
+                        </tr>
+                        <tr class="success">
+                            <td>产品2</td>
+                            <td>10/11/2013</td>
+                            <td>发货中</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>产品3</td>
+                            <td>20/10/2013</td>
+                            <td>待确认</td>
+                        </tr>
+                        <tr class="danger">
+                            <td>产品4</td>
+                            <td>20/10/2013</td>
+                            <td>已退货</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <caption>响应式表格布局</caption>
+                        <thead>
+                            <tr>
+                                <th>产品</th>
+                                <th>付款日期</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>产品1</td>
+                                <td>23/11/2013</td>
+                                <td>待发货</td>
+                            </tr>
+                            <tr>
+                                <td>产品2</td>
+                                <td>10/11/2013</td>
+                                <td>发货中</td>
+                            </tr>
+                            <tr>
+                                <td>产品3</td>
+                                <td>20/10/2013</td>
+                                <td>待确认</td>
+                            </tr>
+                            <tr>
+                                <td>产品4</td>
+                                <td>20/10/2013</td>
+                                <td>已退货</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="name">名称</label>
+                        <input type="text" class="form-control" id="name"
+                        placeholder="请输入名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputfile">文件输入</label>
+                        <input type="file" id="inputfile">
+                        <p class="help-block">这里是块级帮助文本的实例。</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 请打勾
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>
+                </form>
+                <br />
+                <form class="form-inline" role="form">
+                    <p>内联表单</p>
+                    <div class="form-group">
+                        <label class="sr-only" for="name">名称</label>
+                        <input type="text" class="form-control" id="name"
+                        placeholder="请输入名称">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="inputfile">文件输入</label>
+                        <input type="file" id="inputfile">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 请打勾
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>
+                </form>
+                <form action="/" method="post">
+                    <input type="datetime-local" class="form-control" placeholder="">
+                    <input type="datetime" class="form-control" placeholder="">
+                    <input type="date" class="form-control" placeholder="">
+                    <input type="month" class="form-control" placeholder="">
+                    <input type="week" class="form-control" placeholder="">
+                    <input type="number" class="form-control" placeholder="">
+                    <input type="email" class="form-control" placeholder="">
+                    <input type="url" class="form-control" placeholder="">
+                    <input type="search" class="form-control" placeholder="">
+                    <input type="tel" class="form-control" placeholder="">
+                    <input type="color" class="form-control" placeholder="">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">
+                            Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label>
+                            <input type="checkbox" value="" disabled>
+                            Option two is disabled
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            Option two can be something else and selecting it will deselect option one
+                        </label>
+                    </div>
+                    <div class="radio disabled">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                            Option three is disabled
+                        </label>
+                    </div>
+                </form>
+                <div class="container">
+                  <div class="row">
+                    <!-- this will center a col 6, and 3 on each side -->
+                    <div class="col-md-6 col-md-offset-3">
+                      <img src="https://cdn1.iconfinder.com/data/icons/gpsmapicons/red/gpsmapicons07.png" width="64"  class="pull-right" alt="">
+                      <h1>
+                          Popovers <small>with  favicon from any URL</small></h1>
+                          <p>
+                              How to easily include favicons from any URL and <strong> HTML code </strong> with your popovers.
+                          </p>
+
+                          <div class="po-markup">
+                              <br>
+                              <a  class="po-link">cnn.com</a>
+                              ←  popover with favicon and HTML coded site information.
+
+                              <div class="po-content hidden">
+                                  <div class="po-title">
+                                    CNN News
+                                </div> <!-- ./po-title -->           
+                                <div class="po-body">
+                                  <p>
+                                      CNN.com is among the world's leaders in online news and information delivery. Staffed <strong>24 hours </strong>, seven days a week by a dedicated staff in CNN's world headquarters in Atlanta, Georgia, and in bureaus worldwide.
+                                  </p>            
+                              </div><!-- ./po-body -->
+                          </div>  <!-- ./po-content -->
+                      </div><!-- ./po-markup -->           
+                      <hr>          
+                      <div  class="text-info lead">
+                          <br>
+                          <p>
+                            Examples of retrieving favicons:
+                        </p>
+                        </div><!-- ./text-info -->
+                        <hr>
+                        <a href="http://getfavicon.appspot.com/test/">See 1,000 top visited websites' favicons</a>
+                        <br>
+                        <hr>
+                        <a href="http://validator.w3.org/check?uri=http%3a%2f%2fbootsnipp.com%2fiframe%2f4qDK;ss=1"><span class="glyphicon glyphicon-check" style="color: #339900;"></span><small> HTML</small><sup>5</sup></a>
+                        </div><!-- ./col-md6 -->
+                    </div><!-- ./row -->
+                    <div class="pover">
+
+                    </div>
+                </div>
+                <!-- ./container -->
+                <div id="issue-list-container" class="container">
+                    <div class="issue-item">
+                        <div class="issue-inner">
+                            <div class="issue-head clearfix">
+                                <div class="avatar pull-left">
+                                    <a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img id="main-page-avatar" class="media-object img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </a>
+                                </div>
+                                <div class="issue-detail">
+                                    <h5 class="issue-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum iaculis mi, non dapibus nulla eleifend sed. Etiam ac commodo leo.Donec non sem id tellus mattis convallis. Morbi dapibus nulla ac dui lacinia</h5>
+                                    <div class="post-meta">
+                                        <span class="issue-number">#12344</span>
+                                        <span class="qa-issue-when">opened 7 days ago by</span>
+                                        <span class="user-login"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="time-stamp" class="badge">Posted 2012-08-02 20:47:04</span>
+                            <div class="pull-right">
+                                <span class="label label-default">alice</span>
+                            </div>
+                        </div>    
+                    </div>
+
+                    <div class="issue-item">
+                        <div class="issue-inner">
+                            <div class="issue-head clearfix">
+                                <div class="avatar pull-left">
+                                    <a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img id="main-page-avatar" class="media-object img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </a>
+                                </div>
+                                <div class="issue-detail">
+                                    <h5 class="issue-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum iaculis mi, non dapibus nulla eleifend sed. Etiam ac commodo leo.Donec non sem id tellus mattis convallis. Morbi dapibus nulla ac dui lacinia</h5>
+                                    <div class="post-meta">
+                                        <span class="issue-number">#12344</span>
+                                        <span class="qa-issue-when">opened 7 days ago by</span>
+                                        <span class="user-login"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="badge">Posted 2012-08-02 20:47:04</span>
+                            <div class="pull-right">
+                                <span class="label label-default">alice</span>
+                            </div>
+                        </div>    
+                    </div> 
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                </label>
+                <br />
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                </label>
+                <form action="/" method="post">
+                    <label>
+
+                    </label>   
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dynamic.js"></script>
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+      $('.po-markup > .po-link').popover({
+        trigger: 'hover',
+            html: true,  // must have if HTML is contained in popover
+            // get the title and conent
+            title: function() {
+              return $(this).parent().find('.po-title').html();
+          },
+          content: function() {
+              return $(this).parent().find('.po-body').html();
+          },
+          container: '.pover',
+          placement: 'right'
+      });
+  });
+</script>

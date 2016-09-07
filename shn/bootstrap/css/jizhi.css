@@ -1,0 +1,125 @@
+﻿body{background:#fff; font-family:"微软雅黑";}
+.row_z{
+    width:1000px;margin:0 auto;
+}
+.head_left{ padding:0;}
+.head_left > img{float:left;margin:33px 15px 24px 0px;}
+    .head_left .head_wenzi {
+        margin-top: 35px;
+        font-size:12px;
+        float:left;
+    }
+        .head_left .head_wenzi p {
+            width:50px;
+            display:inline-block;
+            float:left;
+            font-size:14px;
+            margin:0;
+        }
+        .head_left .head_wenzi span {
+            color: #c7000a;
+        }
+        .head_left .head_wenzi img{
+            display:inline-block;
+        }
+        .head_left .head_wenzi hr {
+            height: 2px;
+            background: #f1c1c4;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    .head_phone span{
+        position:absolute;
+        top:42px;
+        left:150px;
+        font-size:16px;
+        color:#969696;
+    }
+    .jz_nav{
+        background:url(../images/nav_bg.png) no-repeat;
+        background-size: cover;
+        height:53px;
+    }
+    .jz_nav li a{
+        color:#fff;
+        height:53px;
+        line-height:53px;
+        padding:0 20px;
+        font-size:16px;
+    }
+    .jz_nav li.active a{
+        background:red;
+    }
+    .jz_nav li a:hover{
+        background:red;
+    }
+    .jz_tiyan{
+        width:295px;
+        height:210px;
+        background:#fef7e4;
+        position:absolute;
+        top:58px;
+        left:64%;
+    }
+    .jz_tiyan > .panel-heading{
+        color:#8f8f8f;
+        text-align:center;
+        font-size:18px;
+        background:none;
+        border:none;
+    }
+    .form-horizontal .control-label{
+        padding:0;
+        line-height:34px;
+        color:#8f8f8f;
+        text-align:center;
+    }
+
+    .btn-default{
+        width:250px;
+        border:none;
+        background:#c7000a;
+        color:#fff;
+    }
+    .panel-default.jz_new{
+        border:none;
+    }
+    .panel-default.jz_new > .panel-heading{
+        background:#fff;
+        border:none;
+        border-bottom:1px solid #d8d8d8;
+        color:#e9423f;
+        font-size:18px;
+        padding:0;
+        height:28px;
+    }
+    .panel-default.jz_new > .panel-heading:before{
+        content:"";
+        width:84px;
+        height:2px;
+        background:#ff0000;
+        position:absolute;
+        top:26px;
+    }
+    .panel-default.jz_new > .panel-heading a{
+        font-size:12px;
+        color:#a7a0a0;
+        float:right;
+        margin-top:5px;
+    }
+    .panel-default.jz_new > .panel-body{
+        padding:0;
+        padding-top:6px;
+    }
+    .panel-default.jz_new > .panel-body ul li{
+        border:none;
+        padding-top:6px;
+        padding-bottom:6px;
+        padding-left:0;
+    }
+    .panel-default.jz_new > .panel-body ul li a{
+         color:#8d8d8d;
+     }
+    .panel-default.jz_new > .panel-body ul li a span{
+        float:right;
+    }

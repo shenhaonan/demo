@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>版块要闻</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+    <div class="head">
+        <ul>
+            <li><a href="" >首页</a></li>
+            <li><a href="">直播课堂</a></li>
+            <li><a href=""class="hover">版块要闻</a></li>
+            <li><a href="">策略研报</a></li>
+            <li><a href="">私募管家</a></li>
+        </ul>
+        <a href="" class="back">返回</a>
+    </div>
+    <div class="content">
+        <div class="conleft l">
+            <ul>
+                <li><a href="">操盘攻略</a></li>
+                <li class="collapsed">
+                    <a href="javascript:void(0);">潜力股池</a>
+                    <div class="collapse" style="height:0;">
+                        <ul>
+                            <li><a href="">短线股池</a></li>
+                            <li><a href="">中线股池</a></li>
+                            <li><a href="">长线股池</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="">投资日历</a></li>
+                <li><a href="">核心研报</a></li>
+            </ul>
+        </div>
+        <div class="conright l">
+            <div class="conr-top">
+                <i class="icon6"></i>推荐股池
+            </div>
+            <div class="conr-con">
+                <img src="images/pic4.png" alt="">
+            </div>
+        </div>
+    </div>
+
+<script>
+    jQuery(function($){
+        var coll = 'ture';
+        $(".collapsed > a").on('click',function () {
+            if(coll == 'ture'){
+                $(this).next('.collapse').animate({height:"120px",});
+                $(".collapsed").animate({height:"160px"});
+                $(".collapsed").css('overflow','inherit');
+                coll = 'false';
+            }else{
+                $(this).next('.collapse').animate({height:"0px"});
+                $(".collapsed").animate({height:"40px"});
+                $(".collapsed").css('overflow','inherit');
+                coll = 'ture';
+            }
+        })
+    })
+</script>
+</body>
+</html>

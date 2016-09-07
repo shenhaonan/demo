@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟框分页</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<button class="btn btn-xs btn-info editmemlevel" messageid="{$info.id}" data-toggle="modal" data-target="#personAddModel">编辑</button>
+
+<div style="display:none;" class="modal fade bs-example-modal-lg in" id="personAddModel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="personAddModelContent">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <span class="modal-header-title" id="myModalLabel">经营人员</span>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                   <div class="col-xs-12" id="managerList">
+
+                   </div>
+                </div>
+            </div>
+            <div class="modal-footer" id="pagination">
+                <a href="javascript:a();">111</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function a(){
+        console.log("1");
+    }
+    function getManagerList(dealerId,page2){
+    //macAddress = document.getElementById("activeXDemo").getMac();
+    $.get("${ctxPath}/common/dealer/manager?"+Math.random(), {
+              page2: page2,
+              pageSize2: 9,
+              dealerId: dealerId,
+              //macAddress:macAddress
+    },
+    function(data){
+        if(data){
+            var managerList=data.managerList;
+            var uploadDir=data.uploadDir;
+            var rs = "";
+            for (var i=0;i<managerList.length;i++)
+            {
+                var name=managerList[i].personName;
+                var picPath=managerList[i].picPath;
+                if(picPath==null){
+                    var path="${ctxPath}/resources/assets/imgs/no_pic.png";
+                }else{
+                    var path="${ctxPath}"+uploadDir+picPath;
+                }
+                rs+="<div class='col-xs-4 demo1_box'>";
+                rs+="<img width='200px' height='130px' src='";
+                rs+=path;
+                rs+="'>";
+                rs=rs+"<p>"+name+"</p></div> ";
+            }
+            $('#managerList').empty();
+            $('#managerList').append(rs);
+
+
+
+            var page2=data.page2;
+            var stor_no2=data.stor_no2;
+            var pageCount2=data.pageCount2;
+            var pagination = "";
+            pagination+="<ul class='pagination pager_cus'>";
+            pagination=pagination+"<li><a>第 "+(page2 + 1);
+            pagination=pagination+" 页/共 "+pageCount2+" 页</a></li>";
+
+
+
+
+            pagination += "<li><a href='javascript:getManagerList(\"";
+            pagination += dealerId;
+            pagination += "\",";
+            pagination += 0 + ");'>« 首页</a></li>";
+            if(page2>0){
+                pagination += "<li><a href='javascript:getManagerList(\"";
+                pagination += dealerId;
+                pagination += "\",";
+                pagination += (page2 - 1) + ");'>« 上一页</a></li>";
+            }
+
+            var start=page2-3;
+            var end=page2+3;
+            if(start<0){
+                end=end-start;
+            }
+            if(end >(pageCount2-1)){
+                end = pageCount2-1;
+                start=end -7;
+            }
+            for(var j=start;j<=end;j++){
+                if(j>-1 && j<pageCount2){
+                    if(page2==j){
+                        pagination += "<li  class='active'><a href='javascript:getManagerList(\"";
+                        pagination += dealerId;
+                        pagination += "\",";
+                        pagination += j + ");'>"+(j+1)+"</a></li>";
+                    }else{
+                        pagination += "<li><a href='javascript:getManagerList(\"";
+                        pagination += dealerId;
+                        pagination += "\",";
+                        pagination += j + ");'>"+(j+1)+"</a></li>";
+                    }
+
+                }
+            }
+
+            if(page2<pageCount2-1){
+                pagination += "<li><a href='javascript:getManagerList(\"";
+                pagination += dealerId;
+                pagination += "\",";
+                pagination += (page2 + 1) + ");'>下一页 »</a></li>";
+            }
+            pagination += "<li><a href='javascript:getManagerList(\"";
+            pagination += dealerId;
+            pagination += "\",";
+            pagination += (pageCount2 - 1) + ");'>« 尾页</a></li>";
+
+            $('#pagination').empty();
+            $('#pagination').append(pagination);
+
+
+            $('#personAddModel').modal('show');
+
+        }
+     }
+    );
+};
+getManagerList(1,0);
+</script>
+</script>
+</body>
+</html>

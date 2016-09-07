@@ -1,0 +1,8 @@
+.kefu ul li{ font-size: 14px; line-height: 25px; vertical-align: middle; list-style:none;}
+.kefu ul li img{vertical-align: middle; margin-right: 3px;}
+.kefu span{ width: 100px; display:block; float: left; letter-spacing: 4px;}
+.kefu samp{ width: 100px; display:block; float: left; letter-spacing: 10px; color: #000;}
+.kefu a{ color: red; margin-left: 10px; font-weight:bold;}
+.kefu a:hover{text-decoration: none; cursor: pointer;}
+.list{ color: red;}
+.list a{ color: #000;}

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jq.snow.js"></script>
+</head>
+<body style="background:#b6ff00;overflow:hidden;">
+    <!--下面是调用方法和参数说明-->
+    <script>
+        $(function () {
+            $.fn.snow({
+                minSize: 5,		//雪花的最小尺寸
+                maxSize: 30, 	//雪花的最大尺寸
+                newOn: 280		//雪花出现的频率 这个数值越小雪花越多
+            });
+        });
+    </script>
+</body>
+</html>

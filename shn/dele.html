@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{margin: 0; padding: 0;}
+    .btn{width: 100%; height: 50px; line-height: 50px; background: blue; color: #fff; text-align: center; font-size: 25px;}
+    .demo{width: 100%; height: auto; overflow: hidden;}
+    .demo li{width: 100%; height: 40px; line-height: 40px; font-size: 20px; color: #fff; background: #000; text-align: center;}
+    .demo li span{display: inline-block; background: #f00; padding: 0 10px;}
+    </style>
+    <script src="http://www.myjsblog.com/js/jquery.js"></script>
+    <script>
+    $(function(){
+        var $btn = $('.btn');
+        var $ul = $('.demo');
+
+        $btn.on('click', function(){
+            var li = $ul.find('li').eq(0).clone();
+            var $len = $ul.find('li').length;
+            li.attr('class','li'+$len);
+            li.find('span').html('删除'+$len);
+            $ul.append(li);
+        });
+
+        $ul.on('click', 'li span', function(){
+            var $this = $(this);
+            $this.parent().remove();
+            var $li = $ul.find('li');
+            $.each($li, function(key,val){
+                $(val).attr('class','li'+key);
+                $(val).find('span').html('删除'+key);
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="btn">添加</div>
+    <ul class="demo">
+        <li class="li0"><span>删除0</span></li>
+        <li class="li1"><span>删除1</span></li>
+        <li class="li2"><span>删除2</span></li>
+        <li class="li3"><span>删除3</span></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手机号查询</title>
+    <script src="js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+    <form action="#" type="get">
+        <input type="text" name="phone" id="phone">
+        <button type="button" id="sou">搜索</button>
+    </form>
+</body>
+<script>
+    $(function(){
+        $('#sou').on('click',function(){
+            var telphone = $('#phone').val();
+            $.ajax({
+            url:'http://apis.baidu.com/apistore/mobilephoneservice/mobilephone',
+            type:'get',
+            headers:{
+                apikey:'6f69b47a5b98ab60a556dcddbd4c4205'
+            },
+            data:{
+                tel:telphone,
+            },
+            dataType:'jsonp',
+            beforeSend:'',
+            success:function(){
+                console.log('1');
+            },
+            error:''
+            })
+        })
+
+
+
+
+
+    //
+
+
+
+
+//
+
+
+
+
+    })
+    $(function(){
+
+
+
+        //
+        //
+        
+    })
+</script>
+</html>

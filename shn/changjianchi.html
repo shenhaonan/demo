@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{margin: 0; padding: 0;}
+    .btn{width: auto; height: 40px; line-height: 40px; text-align: center; background: #000; color: #fff; padding: 0 5px; border: 1px solid #fff;}
+    .demo{width: 300px; max-height: 0; overflow: hidden; border: 3px solid #f00; background: #fff; line-height: 24px; transition: max-height 2s; -webkit-transform: translateZ(0); -moz-transform: translateZ(0); -o-transform: translateZ(0); transform: translateZ(0);}
+    .active{max-height: 50px;}
+    .ab{width:100px; height: 100px;border: 1px solid red;}
+    .ab:hover .cd{color: red;}
+    </style>
+    <script src="http://www.juesedanyaoshi.com/js/jquery.js"></script>
+    <script>
+    $(function(){
+        $('.btn').on('click',function(){
+            $('.demo').addClass('active');
+        });
+    });
+    $(function(){
+        $(".slide").click(function(){
+            $('.slide1,.slide2').slideUp();
+            
+            //var a = $('.slide1').height();
+            //alert(a);
+        })
+    })
+    </script>
+</head>
+<body>
+    <div class="btn">点击触发</div>
+    <div class="demo">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
+    <div class="ab">
+        <div class="cd">1111</div>
+    </div>
+    <div class="slide">
+        展开
+    </div>
+    <div class="slide1" >
+        展开后的内容
+        
+    <div class="slide2">
+        展开的内容2
+    </div>
+    </div>
+</body>
+</html>

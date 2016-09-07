@@ -1,0 +1,66 @@
+*{margin:0; padding:0;}
+body{font-size:12px; background:#FFF; font-family:"微软雅黑";height: 100%;}
+/*点击没有虚线*/
+a{outline:none; star:expression(this.onFocus=this.blur()); text-decoration:none;}
+a:hover{text-decoration:none;}
+a img{border:none;}
+img{border:none;}
+ul li{list-style:none;}
+dl dd{list-style:none;}
+.clear:after{ content: ''; clear:both; font-size:0; line-height:0;}
+i{font-style: normal;}
+.l{float: left;}
+.r{float: right;}
+
+.head{width: 1400px;height: 52px;margin:0 auto;background: #efefef;border-bottom: 1px solid #c5c5c5;}
+.head ul li{float: left;line-height: 52px;}
+.head ul li a{margin: 0 39px; color: #444444;font-size: 17px;}
+.head ul li a.hover{color: #524e81;border-bottom: 4px solid #615d8a; font-weight: bold;padding-bottom: 5px;}
+.back{float: right;border:2px solid #666666;border-radius: 20px;padding: 4px 17px;color: #666666;margin-right: 18px;margin-top: 12px;}
+.banner{margin: 19px auto 28px auto; width: 1400px;}
+
+.icon1{background: url(../images/icon1.png) no-repeat;}
+.icon2{background: url(../images/icon2.png) no-repeat;}
+.icon3{background: url(../images/icon3.png) no-repeat 0 4px;}
+.icon4{background: url(../images/icon4.png) no-repeat 0 4px;}
+.icon5{background: url(../images/icon5.png) no-repeat 0 4px;}
+.icon6{background: url(../images/icon6.png) no-repeat ;}
+.content1,.content2{width: 1363px; height: 191px; border-bottom:1px solid #c9c9c9; margin: 0 auto;margin-bottom: 32px;}
+.con1left{width: 680px;}
+.con1ll{width: 330px;}
+.con1ll-top,.con2ll-top{font-size: 17px;color: #542f6b;height: 20px;vertical-align: bottom;margin-bottom: 14px;}
+.con1ll-top i,.con2ll-top i{margin-left: 1px;width: 23px;height:20px; display: inline-block; margin-right: 8px;float: left;}
+.con1ll-top span{font-size: 12px;color: #666666;margin-left: 20px;}
+.con1ll-con{line-height: 25px;font-size: 14px;color: #333333;padding-right: 12px;position: relative;}
+.con1ll-con span{position: absolute;bottom: -7px;right: 12px;font-size: 14px; color: #3073ce;}
+.con1ll-con span a{text-decoration: underline; color: #3073ce;}
+.con1right {width: 634px;position: relative;padding-left: 49px;}
+.xian:before{content: '';position: absolute;width: 1px;height: 140px;left: 1px;top: 11px;background: #999999;}
+.xian1:before{content: '';position: absolute;width: 1px;height: 140px;left: 1px;top: 72px;background: #999999;}
+
+.content2{height: 286px;}
+.con2ll-top span{float: right;margin-right: 51px;font-size: 14px; color: #3073ce;}
+.con2ll-top span a{text-decoration: underline; color: #3073ce;}
+.con2ll-con{height: 230px;}
+
+
+/*版块要闻*/
+html{height: 100%;}
+.content{height: 100%; width: 1400px;margin: 0 auto; }
+.conleft{background: #8c70a7;height: 100%;width: 300px; position: absolute;}
+.conleft > ul{padding-top: 32px;}
+.conleft > ul > li {width: 247px;height: 40px;line-height: 40px;margin-left: 54px;font-size: 14px;font-weight: bold;position: relative;}
+.conleft > ul > li > a{color: #fff;padding-left: 58px; width: 189px;height: 40px;display: block;}
+.conleft > ul > li:before{content: '';width: 1px; height: 49px;position: absolute;left: 0px;top:-4px;background: #d7bbf3;}
+.conleft > ul > li:after{content: '';width: 6px; height: 6px;position: absolute;left: -4px;top:18px;border:1px solid #d7bbf3; background: #8c70a7;border-radius: 5px;}
+.conleft > ul > li > a:hover:before{content: '';width: 247px;height: 40px;position: absolute;top: 0;left: 0;background: #fff;opacity: 0.3;}
+.collapse{overflow: hidden;}
+.collapsed ul li {width: 247px;height: 40px;line-height: 40px;font-size: 12px;font-weight: normal;position: relative;}
+.collapsed ul li a {color: #fff;padding-left: 58px; width: 189px;height: 40px;display: block;}
+.collapsed ul li:before{content: '';width: 1px; height: 49px;position: absolute;left: 0px;top:-4px;background: #d7bbf3;}
+.collapsed ul li a:before{content: '';width: 31px; height: 1px;position: absolute;left: 1px;top:18px;border-bottom: 1px dashed #d5b9f1;}
+.collapsed ul li a:hover{background: #fff;color: #6d5288;}
+.conright{width: 1100px;height: 100%;margin-left: 300px;}
+.conr-top{width: 1000px;margin:0 auto;height: 40px;line-height: 40px;text-align: right;position: relative; border-bottom: 1px solid #999999;}
+.conr-top i{float: right;width: 14px;height: 14px;position: absolute;right: 56px;top: 14px;}
+.conr-con{text-align: center;}

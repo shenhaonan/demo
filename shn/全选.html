@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>
+    $(function(){
+        $("#checkall").click( 
+          function(){ 
+            console.log(0);
+            if(this.checked){ 
+                console.log(1);
+                $("input[name='checkname']").attr('checked', true)
+            }else{ 
+                console.log(2)
+                $("input[name='checkname']").attr('checked', false)
+            } 
+          } 
+        );
+    })
+    </script>
+    <script>
+    $(function(){
+        $("#checkall").click( 
+          function(){ 
+            console.log(0);
+            if(this.checked){ 
+                console.log(1);
+                $("input[name='checkname']").prop('checked', true)
+            }else{ 
+                console.log(2)
+                $("input[name='checkname']").prop('checked', false)
+            } 
+          } 
+        );
+    })
+    </script>
+</head>
+<body>
+    <input type='checkbox' id='id1' name='checkname' value='1' />value1  
+    <input type='checkbox' id='id2' name='checkname' value='2' />value2 
+    <input type='checkbox' id='id3' name='checkname' value='3' />value3 
+
+    <input type="checkbox" id="checkall" name="checkall" value="全选" /> 
+    <input type="button" id="delcheckall" name="delcheckall" value="取消全选" />
+</body>
+</html>
